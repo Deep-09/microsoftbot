@@ -93,7 +93,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             IRestResponse response = client.Execute(request);
             string result1;
             result1 = response.Content;
-            await context.PostAsync($"You reached {result.Intents[0].Intent}. You said: {result.Query} {result1}");
+            await context.PostAsync($"You reached {result.Intents[0].Intent}. You said: {result1} ");
             context.Wait(MessageReceived);
         }
     }
