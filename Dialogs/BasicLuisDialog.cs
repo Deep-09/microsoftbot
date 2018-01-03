@@ -84,7 +84,12 @@ namespace Microsoft.Bot.Sample.LuisBot
         
         private async Task ShowLuisResult(IDialogContext context, LuisResult result)
         {
-
+            string token = Authenticate();
+            await context.PostAsync($"You reached {result.Intents[0].Intent}. Session Token: {token} ");
+            context.Wait(MessageReceived);
+        }
+        public string Authenticate()
+        {
             var client = new RestClient("https://c3663c91.ngrok.io/aeengine/rest/authenticate");
             var request = new RestRequest(Method.POST);
             request.AddHeader("postman-token", "ea502694-bf8a-9c2e-e27b-8082381ce137");
@@ -96,8 +101,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             jsonresult = response.Content;
             var myDetails = JsonConvert.DeserializeObject<MyDetail>(jsonresult);
             string token = myDetails.sessionToken;
-            await context.PostAsync($"You reached {result.Intents[0].Intent}. Session Token: {token} ");
-            context.Wait(MessageReceived);
+            return token;
         }
     }
     public class MyDetail
