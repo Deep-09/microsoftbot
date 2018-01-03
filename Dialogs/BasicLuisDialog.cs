@@ -95,8 +95,8 @@ namespace Microsoft.Bot.Sample.LuisBot
             string jsonresult;
             jsonresult = response.Content;
             var myDetails = JsonConvert.DeserializeObject<MyDetail>(jsonresult);
-            string sessionToken = myDetails.sessionToken;
-            await context.PostAsync($"You reached {result.Intents[0].Intent}. Session Token: {sessionToken} ");
+            string token = myDetails.sessionToken;
+            await context.PostAsync($"You reached {result.Intents[0].Intent}. Session Token: {token} ");
             context.Wait(MessageReceived);
         }
     }
