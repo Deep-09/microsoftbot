@@ -5,6 +5,7 @@ using RestSharp;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Luis;
 using Microsoft.Bot.Builder.Luis.Models;
+using Newtonsoft.Json;
 
 namespace Microsoft.Bot.Sample.LuisBot
 {
@@ -91,10 +92,21 @@ namespace Microsoft.Bot.Sample.LuisBot
             request.AddHeader("content-type", "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
             request.AddParameter("multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW", "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"username\"\r\n\r\nFusionAdmin\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"password\"\r\n\r\nFusion@123\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--", ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
-            string result1;
-            result1 = response.Content;
-            await context.PostAsync($"You reached {result.Intents[0].Intent}. You said: {result1} ");
+            string jsonresult;
+            jsonresult = response.Content;
+            var myDetails = JsonConvert.DeserializeObject<MyDetail>(jsonresult);
+            string sessionToken = myDetails.sessionToken;
+            await context.PostAsync($"You reached {result.Intents[0].Intent}. Session Token: {sessionToken} ");
             context.Wait(MessageReceived);
         }
     }
+    public class MyDetail
+    {
+        public string sessionToken
+        {
+            get;
+            set;
+        }
+    }
+}
 }
