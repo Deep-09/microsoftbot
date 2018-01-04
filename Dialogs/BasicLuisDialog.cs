@@ -6,6 +6,9 @@ using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Luis;
 using Microsoft.Bot.Builder.Luis.Models;
 using Newtonsoft.Json;
+using System.Web.Script.Serialization;
+using LuisBot.Dialogs;
+using System.Collections.Generic;
 
 namespace Microsoft.Bot.Sample.LuisBot
 {
@@ -73,7 +76,72 @@ namespace Microsoft.Bot.Sample.LuisBot
         [LuisIntent("Software Installation")]
         public async Task SoftwareInstallationIntent(IDialogContext context, LuisResult result)
         {
-            await this.ShowLuisResult(context, result);
+            var client = new RestClient("https://c3663c91.ngrok.io/aeengine/rest/authenticate");
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("postman-token", "ea502694-bf8a-9c2e-e27b-8082381ce137");
+            request.AddHeader("cache-control", "no-cache");
+            request.AddHeader("content-type", "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
+            request.AddParameter("multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW", "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"username\"\r\n\r\nFusionAdmin\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"password\"\r\n\r\nFusion@123\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--", ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+            string jsonresult;
+            jsonresult = response.Content;
+            var myDetails = JsonConvert.DeserializeObject<MyDetail>(jsonresult);
+            string token = myDetails.sessionToken;
+            var request1 = new RestRequest("http://c3663c91.ngrok.io/aeengine/rest/execute", Method.POST);
+            request1.AddHeader("X-session-token", token);
+
+            JavaScriptSerializer serialiser = new JavaScriptSerializer();
+            List<AutomationParameter> ListAutomationField = new List<AutomationParameter>();
+
+            AutomationParameter parameter1 = new AutomationParameter();
+            parameter1.name = "software";
+            parameter1.value = "JDK";
+            parameter1.type = "String";
+            parameter1.order = 1;
+            parameter1.secret = false;
+            parameter1.optional = false;
+            parameter1.displayName = "Software Name";
+            parameter1.extension = null;
+            parameter1.poolCredential = false;
+
+            ListAutomationField.Add(parameter1);
+
+            AutomationParameter parameter2 = new AutomationParameter();
+            parameter2.name = "slackChannel";
+            parameter2.value = "D6MRM1MML";
+            parameter2.type = "String";
+            parameter2.order = 2;
+            parameter2.secret = false;
+            parameter2.optional = false;
+            parameter2.displayName = "Slack Channel";
+            parameter2.extension = null;
+            parameter2.poolCredential = false;
+
+            ListAutomationField.Add(parameter2);
+            Guid temp = new Guid();
+
+            RootAutomation AutoRoot = new RootAutomation();
+            AutoRoot.orgCode = "FUSION";
+            AutoRoot.workflowName = "Software Installation";
+            AutoRoot.userId = "Admin Fusion";
+            AutoRoot.@params = ListAutomationField;
+            AutoRoot.sourceId = temp.ToString();
+            AutoRoot.source = "AutomationEdge HelpDesk";
+            AutoRoot.responseMailSubject = null;
+            string json = serialiser.Serialize(AutoRoot);
+
+
+
+            //string body = "{\"orgCode\":\"FUSION\",\"workflowName\":\"Software Installation\",\"userId\":\"Admin Fusion\",\"sourceId\":\"SID_5b-912-21f4-88-880eb-8a0b-91\",\"source\":\"AutomationEdge HelpDesk\",\"responseMailSubject\":\"null\",\"params\":[{\"name\":\"software\",\"value\":\"JDK\",\"type\":\"String\",\"order\":1,\"secret\":false,\"optional\":false,\"defaultValue\":null,\"displayName\":\"Incident Number\",\"extension\":null,\"poolCredential\":false},{\"name\":\"slackChannel\",\"value\":\"fdgvdfg\",\"type\":\"String\",\"order\":2,\"secret\":false,\"optional\":false,\"defaultValue\":null,\"displayName\":\"Slack Channel\",\"extension\":null,\"poolCredential\":false}]}";
+            //var json = JsonConvert.SerializeObject(body);
+            request1.AddHeader("content-type", "application/json");
+            request1.AddParameter("application/json", json, ParameterType.RequestBody);
+            request1.RequestFormat = DataFormat.Json;
+            IRestResponse response1 = client.Execute(request1);
+           
+            await context.PostAsync($"You reached {result.Intents[0].Intent} with entity {result.Entities[0].Entity} resonse is {response1.Content} .");
+
+            //await this.ShowLuisResult(context, result);
         }
         
         [LuisIntent("Incident Status")]
@@ -84,10 +152,11 @@ namespace Microsoft.Bot.Sample.LuisBot
         
         private async Task ShowLuisResult(IDialogContext context, LuisResult result)
         {
-            string token = Authenticate();
+            //string token = Authenticate();
             await context.PostAsync($"You reached {result.Intents[0].Intent} with entity {result.Entities[0].Entity} . Session Token: {token} ");
             context.Wait(MessageReceived);
         }
+        /*
         public string Authenticate()
         {
             var client = new RestClient("https://c3663c91.ngrok.io/aeengine/rest/authenticate");
@@ -112,6 +181,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             return response1.Content;
 
         }
+        */
     }
     public class MyDetail
     {
