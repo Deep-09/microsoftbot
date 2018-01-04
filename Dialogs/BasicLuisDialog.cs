@@ -101,7 +101,16 @@ namespace Microsoft.Bot.Sample.LuisBot
             jsonresult = response.Content;
             var myDetails = JsonConvert.DeserializeObject<MyDetail>(jsonresult);
             string token = myDetails.sessionToken;
-            return token;
+            var request1 = new RestRequest("http://10.41.4.56:8080/aeengine/rest/execute", Method.POST);
+            request1.AddHeader("X-session-token", token);
+            string body = "{\"orgCode\":\"FUSION\",\"workflowName\":\"Software Installation\",\"userId\":\"Admin Fusion\",\"sourceId\":\"SID_5b-777-21f4-88-880eb-8a0b-90\",\"source\":\"AutomationEdge HelpDesk\",\"responseMailSubject\":\"null\",\"params\":[{\"name\":\"software\",\"value\":\"JDK\",\"type\":\"String\",\"order\":1,\"secret\":false,\"optional\":false,\"defaultValue\":null,\"displayName\":\"Incident Number\",\"extension\":null,\"poolCredential\":false},{\"name\":\"slackChannel\",\"value\":\"fdgvdfg\",\"type\":\"String\",\"order\":2,\"secret\":false,\"optional\":false,\"defaultValue\":null,\"displayName\":\"Slack Channel\",\"extension\":null,\"poolCredential\":false}]}";
+            //var json = JsonConvert.SerializeObject(body);
+            request1.AddHeader("content-type", "application/json");
+            request1.AddParameter("application/json", body, ParameterType.RequestBody);
+            request1.RequestFormat = DataFormat.Json;
+            IRestResponse response1 = client.Execute(request1);
+            return response1.Content;
+
         }
     }
     public class MyDetail
