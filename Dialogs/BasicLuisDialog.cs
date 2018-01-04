@@ -95,7 +95,7 @@ namespace Microsoft.Bot.Sample.LuisBot
 
             AutomationParameter parameter1 = new AutomationParameter();
             parameter1.name = "software";
-            parameter1.value = "JDK";
+            parameter1.value = result.Entities[0].Entity;
             parameter1.type = "String";
             parameter1.order = 1;
             parameter1.secret = false;
@@ -118,7 +118,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             parameter2.poolCredential = false;
 
             ListAutomationField.Add(parameter2);
-            Guid temp = new Guid();
+            Guid temp =Guid.NewGuid();
 
             RootAutomation AutoRoot = new RootAutomation();
             AutoRoot.orgCode = "FUSION";
