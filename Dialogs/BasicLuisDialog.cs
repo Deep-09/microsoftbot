@@ -153,7 +153,7 @@ namespace Microsoft.Bot.Sample.LuisBot
         private async Task ShowLuisResult(IDialogContext context, LuisResult result)
         {
             //string token = Authenticate();
-            await context.PostAsync($"You reached {result.Intents[0].Intent} with entity {result.Entities[0].Entity} . Session Token: {token} ");
+            await context.PostAsync($"You reached {result.Intents[0].Intent} with entity {result.Entities[0].Entity} . ");
             context.Wait(MessageReceived);
         }
         /*
