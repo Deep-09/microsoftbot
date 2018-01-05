@@ -15,12 +15,15 @@ namespace Microsoft.Bot.Sample.LuisBot
 {
     // For more information about this template visit http://aka.ms/azurebots-csharp-luis
     [Serializable]
-    public class BasicLuisDialog : LuisDialog<object>, IDialog<object>
-    {
+    public class BasicLuisDialog : LuisDialog<object>
+        /*
         private const string SoftwareOption = "Software Installation";
+
         //private const string ResetPasswordOption = "Reset Password";
 
+#pragma warning disable CS0114 // Member hides inherited member; missing override keyword
         public async Task StartAsync(IDialogContext context)
+#pragma warning restore CS0114 // Member hides inherited member; missing override keyword
         {
             context.Wait(this.MessageReceivedAsync);
         }
@@ -59,7 +62,7 @@ namespace Microsoft.Bot.Sample.LuisBot
                 await this.StartAsync(context);
             }
         }
-
+        */
 
 
         public BasicLuisDialog() : base(new LuisService(new LuisModelAttribute(
