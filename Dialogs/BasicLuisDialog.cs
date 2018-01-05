@@ -9,13 +9,59 @@ using Newtonsoft.Json;
 using System.Web.Script.Serialization;
 using LuisBot.Dialogs;
 using System.Collections.Generic;
+using Microsoft.Bot.Connector;
 
 namespace Microsoft.Bot.Sample.LuisBot
 {
     // For more information about this template visit http://aka.ms/azurebots-csharp-luis
     [Serializable]
-    public class BasicLuisDialog : LuisDialog<object>
+    public class BasicLuisDialog : LuisDialog<object>, IDialog<object>
     {
+        private const string SoftwareOption = "Software Installation";
+        //private const string ResetPasswordOption = "Reset Password";
+
+        public async Task StartAsync(IDialogContext context)
+        {
+            context.Wait(this.MessageReceivedAsync);
+        }
+
+        private async Task MessageReceivedAsync(IDialogContext context, IAwaitable<IMessageActivity> result)
+        {
+            PromptDialog.Choice(
+                context,
+                this.AfterChoiceSelected,
+                new[] { SoftwareOption},
+                "What do you want to do today?",
+                "I am sorry but I didn't understand that. I need you to select one of the options below",
+                attempts: 2);
+        }
+
+        private async Task AfterChoiceSelected(IDialogContext context, IAwaitable<string> result)
+        {
+            try
+            {
+                var selection = await result;
+
+                switch (selection)
+                {
+                    case SoftwareOption:
+                        await context.PostAsync("This functionality is not yet implemented! Try resetting your password.");
+                        await this.StartAsync(context);
+                        break;
+
+                    //case ResetPasswordOption:
+                        //context.Call(new ResetPasswordDialog(), this.AfterResetPassword);
+                        //break;
+                }
+            }
+            catch (TooManyAttemptsException)
+            {
+                await this.StartAsync(context);
+            }
+        }
+
+
+
         public BasicLuisDialog() : base(new LuisService(new LuisModelAttribute(
             ConfigurationManager.AppSettings["LuisAppId"], 
             ConfigurationManager.AppSettings["LuisAPIKey"], 
