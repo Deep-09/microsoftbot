@@ -16,6 +16,7 @@ namespace Microsoft.Bot.Sample.LuisBot
     // For more information about this template visit http://aka.ms/azurebots-csharp-luis
     [Serializable]
     public class BasicLuisDialog : LuisDialog<object>
+    {
         /*
         private const string SoftwareOption = "Software Installation";
 
