@@ -84,7 +84,7 @@ namespace Microsoft.Bot.Sample.LuisBot
         [LuisIntent("Greeting")]
         public async Task GreetingIntent(IDialogContext context, LuisResult result)
         {
-            await this.ShowLuisResult(context, result);
+            await context.PostAsync($"Hello! I am your IT Service Desk Virtual Assistant *Robin* :) . I can help you with IT service related issues and requests. How may I help you today?");
         }
 
         [LuisIntent("Cancel")]
