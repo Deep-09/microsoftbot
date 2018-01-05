@@ -94,7 +94,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             List<AutomationParameter> ListAutomationField = new List<AutomationParameter>();
 
             AutomationParameter parameter1 = new AutomationParameter();
-            parameter1.name = "software";
+            parameter1.name = result.Entities[0].ToString();
             parameter1.value = result.Entities[0].Entity;
             parameter1.type = "String";
             parameter1.order = 1;
