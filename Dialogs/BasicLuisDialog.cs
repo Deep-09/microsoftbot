@@ -94,7 +94,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             List<AutomationParameter> ListAutomationField = new List<AutomationParameter>();
 
             AutomationParameter parameter1 = new AutomationParameter();
-            parameter1.name = result.Entities[0].ToString();
+            parameter1.name = "software";
             parameter1.value = result.Entities[0].Entity;
             parameter1.type = "String";
             parameter1.order = 1;
@@ -139,7 +139,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             request1.RequestFormat = DataFormat.Json;
             IRestResponse response1 = client.Execute(request1);
            
-            await context.PostAsync($"You reached {result.Intents[0].Intent} with {result.Entities[0].ToString()} {result.Entities[0].Entity} resonse is {response1.Content} .");
+            await context.PostAsync($"You reached {result.Intents[0].Intent} with entity {result.Entities[0].Entity} resonse is {response1.Content} .");
 
             //await this.ShowLuisResult(context, result);
         }
