@@ -203,7 +203,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             request1.RequestFormat = DataFormat.Json;
             IRestResponse response1 = client.Execute(request1);
 
-            await context.PostAsync($"You reached {result.Intents[0].Intent} with entity {result.Entities[0].Entity} resonse is {response1.Content} .");
+            await context.PostAsync($"You reached {result.Intents[0].Intent} resonse is {response1.Content} .");
 
             //await this.ShowLuisResult(context, result);
         }
