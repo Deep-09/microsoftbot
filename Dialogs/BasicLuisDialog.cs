@@ -145,6 +145,8 @@ namespace Microsoft.Bot.Sample.LuisBot
             parameter2.extension = null;
             parameter2.poolCredential = false;
 
+            ListAutomationField.Add(parameter2);
+
             AutomationParameter parameter3 = new AutomationParameter();
             parameter3.name = "User_Name";
             parameter3.value = "Deep";
@@ -232,7 +234,7 @@ namespace Microsoft.Bot.Sample.LuisBot
 
             AutomationParameter parameter1 = new AutomationParameter();
             parameter1.name = "Sam_Account_Name";
-            parameter1.value = result.Entities[0].Entity;
+            parameter1.value = "Deepak";
             parameter1.type = "String";
             parameter1.order = 1;
             parameter1.secret = false;
