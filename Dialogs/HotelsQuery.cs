@@ -6,17 +6,18 @@
     [Serializable]
     public class HotelsQuery
     {
-        [Prompt("Please enter your Organization Name")]
+
+        [Prompt("Please enter your { & }")]
         [Optional]
-        public string OrganizationName { get; set; }
+        public string SamAccountName { get; set; }
 
         [Prompt("Please enter your Passsword")]
         [Optional]
         public string AirportCode { get; set; }
-
-        [Prompt("Please enter your Sam Account Name")]
+        /*
+        [Prompt("Please enter your Organization Name")]
         [Optional]
-        public string SamAccountName { get; set; }
+        public string OrganizationName { get; set; }
 
         [Prompt("Please enter your Display Name")]
         [Optional]
@@ -25,7 +26,7 @@
         [Prompt("Please enter your Passsword")]
         [Optional]
         public string Password { get; set; }
+        */
 
-   
     }
 }

@@ -18,11 +18,11 @@ namespace Microsoft.Bot.Sample.LuisBot
     [Serializable]
     public class BasicLuisDialog : LuisDialog<object>
     {
-        private const string EntityOrganizationName = "organizationname";
+        //private const string EntityOrganizationName = "organizationname";
         private const string EntitySamAccountName = "samaccountname";
-        private const string EntityUsertName = "username";
-        private const string EntityDisplayName = "displayname";
-        private const string EntityPassword = "password";
+        //private const string EntityUsertName = "username";
+        //private const string EntityDisplayName = "displayname";
+        //private const string EntityPassword = "password";
 
 
         /*
