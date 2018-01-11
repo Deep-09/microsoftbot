@@ -266,7 +266,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             request1.RequestFormat = DataFormat.Json;
             IRestResponse response1 = client.Execute(request1);
 
-            await context.PostAsync($"You reached {result.Intents[0].Intent} resonse is {response1.Content} .");
+            await context.PostAsync($"I will unlock account for {result.Entities[0].Entity} as soon as possible... Visit me again whenever you need my help. Have a great day.");
 
         }
         
