@@ -6,12 +6,22 @@
     [Serializable]
     public class HotelsQuery
     {
-        [Prompt("Please enter your {&}")]
+        [Prompt("Please enter your Organization Name")]
+        [Optional]
+        public string OrganizationName { get; set; }
+
+        [Prompt("Please enter your Sam Account Name")]
         [Optional]
         public string SamAccountName { get; set; }
 
-        [Prompt("Near which Airport")]
+        [Prompt("Please enter your Display Name")]
         [Optional]
-        public string AirportCode { get; set; }
+        public string DisplayName { get; set; }
+
+        [Prompt("Please enter your Passsword")]
+        [Optional]
+        public string Password { get; set; }
+
+   
     }
 }

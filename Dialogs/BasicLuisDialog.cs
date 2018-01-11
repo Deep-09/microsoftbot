@@ -18,7 +18,11 @@ namespace Microsoft.Bot.Sample.LuisBot
     [Serializable]
     public class BasicLuisDialog : LuisDialog<object>
     {
+
         private const string EntitySamAccountName = "samaccountname";
+     
+
+
         /*
         private const string SoftwareOption = "Software Installation";
 
@@ -346,15 +350,15 @@ namespace Microsoft.Bot.Sample.LuisBot
                     IRestResponse response1 = client.Execute(request1);
 
                     //await context.PostAsync($"You reached {result.Intents[0].Intent} resonse is {response1.Content} .");
-                    message += $" in {state.SamAccountName}...";
+                    message += $"I will create account for {state.SamAccountName} soon...";
 
                 }
-                await context.PostAsync(message);
+                
             };
 
             return new FormBuilder<HotelsQuery>()
-                .Field(nameof(HotelsQuery.SamAccountName), (state) => string.IsNullOrEmpty(state.AirportCode))
-                .Field(nameof(HotelsQuery.AirportCode), (state) => string.IsNullOrEmpty(state.SamAccountName))
+                .Field(nameof(HotelsQuery.SamAccountName), (state) => string.IsNullOrEmpty(state.OrganizationName))
+                .Field(nameof(HotelsQuery.OrganizationName), (state) => string.IsNullOrEmpty(state.SamAccountName))
                 .OnCompletion(processHotelsSearch)
                 .Build();
         }
@@ -365,7 +369,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             {
                 var san = await result;
                 
-                await context.PostAsync($"Entity");
+                await context.PostAsync("Visit me again whenever you need me .Have a great day :)");
 
            
             }
