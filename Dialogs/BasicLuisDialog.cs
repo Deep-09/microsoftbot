@@ -18,9 +18,11 @@ namespace Microsoft.Bot.Sample.LuisBot
     [Serializable]
     public class BasicLuisDialog : LuisDialog<object>
     {
-
+        private const string EntityOrganizationName = "organizationname";
         private const string EntitySamAccountName = "samaccountname";
-     
+        private const string EntityUsertName = "username";
+        private const string EntityDisplayName = "displayname";
+        private const string EntityPassword = "password";
 
 
         /*
@@ -357,8 +359,8 @@ namespace Microsoft.Bot.Sample.LuisBot
             };
 
             return new FormBuilder<HotelsQuery>()
-                .Field(nameof(HotelsQuery.SamAccountName), (state) => string.IsNullOrEmpty(state.OrganizationName))
-                .Field(nameof(HotelsQuery.OrganizationName), (state) => string.IsNullOrEmpty(state.SamAccountName))
+                .Field(nameof(HotelsQuery.SamAccountName), (state) => string.IsNullOrEmpty(state.AirportCode))
+                .Field(nameof(HotelsQuery.AirportCode), (state) => string.IsNullOrEmpty(state.SamAccountName))
                 .OnCompletion(processHotelsSearch)
                 .Build();
         }

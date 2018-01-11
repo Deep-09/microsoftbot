@@ -10,6 +10,10 @@
         [Optional]
         public string OrganizationName { get; set; }
 
+        [Prompt("Please enter your Passsword")]
+        [Optional]
+        public string AirportCode { get; set; }
+
         [Prompt("Please enter your Sam Account Name")]
         [Optional]
         public string SamAccountName { get; set; }
