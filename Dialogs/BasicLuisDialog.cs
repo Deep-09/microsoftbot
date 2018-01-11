@@ -359,10 +359,10 @@ namespace Microsoft.Bot.Sample.LuisBot
             };
 
             return new FormBuilder<HotelsQuery>()
-                .Field(nameof(HotelsQuery.SamAccountName), (state) => string.IsNullOrEmpty(state.AirportCode))
-                .Field(nameof(HotelsQuery.AirportCode), (state) => string.IsNullOrEmpty(state.SamAccountName))
-                .OnCompletion(processHotelsSearch)
-                .Build();
+               .Field(nameof(HotelsQuery.SamAccountName), (state) => string.IsNullOrEmpty(state.AirportCode))
+               .Field(nameof(HotelsQuery.AirportCode), (state) => string.IsNullOrEmpty(state.SamAccountName))
+               .OnCompletion(processHotelsSearch)
+               .Build();
         }
 
         private async Task ResumeAfterHotelsFormDialog(IDialogContext context, IAwaitable<HotelsQuery> result)

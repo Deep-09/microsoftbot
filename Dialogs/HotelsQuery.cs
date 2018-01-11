@@ -7,11 +7,11 @@
     public class HotelsQuery
     {
 
-        [Prompt("Please enter your { & }")]
+        [Prompt("Please enter your {&}")]
         [Optional]
         public string SamAccountName { get; set; }
 
-        [Prompt("Please enter your Passsword")]
+        [Prompt("Near which Airport")]
         [Optional]
         public string AirportCode { get; set; }
         /*
