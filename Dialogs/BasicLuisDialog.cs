@@ -10,6 +10,7 @@ using System.Web.Script.Serialization;
 using LuisBot.Dialogs;
 using System.Collections.Generic;
 using Microsoft.Bot.Connector;
+using Microsoft.Bot.Builder.FormFlow;
 
 namespace Microsoft.Bot.Sample.LuisBot
 {
@@ -17,6 +18,7 @@ namespace Microsoft.Bot.Sample.LuisBot
     [Serializable]
     public class BasicLuisDialog : LuisDialog<object>
     {
+        private const string EntitySamAccountName = "samaccountname";
         /*
         private const string SoftwareOption = "Software Installation";
 
@@ -99,7 +101,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             await this.ShowLuisResult(context, result);
         }
     
-        [LuisIntent("Add Account")]
+        //[LuisIntent("Add Account")]
         public async Task AddAccountIntent(IDialogContext context, LuisResult result)
         {
 
@@ -211,6 +213,77 @@ namespace Microsoft.Bot.Sample.LuisBot
 
             //await this.ShowLuisResult(context, result);
         }
+
+        [LuisIntent("Add Account")]
+        public async Task Search(IDialogContext context, IAwaitable<IMessageActivity> activity, LuisResult result)
+        {
+            var message = await activity;
+            await context.PostAsync($"Welcome to the Hotels finder! We are analyzing your message: '{message.Text}'...");
+
+            var hotelsQuery = new HotelsQuery();
+
+            EntityRecommendation samaccountnameEntityRecommendation;
+
+            if (result.TryFindEntity(EntitySamAccountName, out samaccountnameEntityRecommendation))
+            {
+                samaccountnameEntityRecommendation.Type = "samaccountname";
+            }
+
+            var hotelsFormDialog = new FormDialog<HotelsQuery>(hotelsQuery, this.BuildHotelsForm, FormOptions.PromptInStart, result.Entities);
+
+            context.Call(hotelsFormDialog, this.ResumeAfterHotelsFormDialog);
+        }
+
+        private IForm<HotelsQuery> BuildHotelsForm()
+        {
+            OnCompletionAsyncDelegate<HotelsQuery> processHotelsSearch = async (context, state) =>
+            {
+                var message = "Searching for hotels";
+                if (!string.IsNullOrEmpty(state.SamAccountName))
+                {
+                    message += $" in {state.SamAccountName}...";
+                }
+                await context.PostAsync(message);
+            };
+
+            return new FormBuilder<HotelsQuery>()
+                .Field(nameof(HotelsQuery.SamAccountName), (state) => string.IsNullOrEmpty(state.AirportCode))
+                .Field(nameof(HotelsQuery.AirportCode), (state) => string.IsNullOrEmpty(state.SamAccountName))
+                .OnCompletion(processHotelsSearch)
+                .Build();
+        }
+
+        private async Task ResumeAfterHotelsFormDialog(IDialogContext context, IAwaitable<HotelsQuery> result)
+        {
+            try
+            {
+                var searchQuery = await result;
+                
+                await context.PostAsync($"I found hotels:");
+
+           
+            }
+            catch (FormCanceledException ex)
+            {
+                string reply;
+
+                if (ex.InnerException == null)
+                {
+                    reply = "You have canceled the operation.";
+                }
+                else
+                {
+                    reply = $"Oops! Something went wrong :( Technical Details: {ex.InnerException.Message}";
+                }
+
+                await context.PostAsync(reply);
+            }
+            finally
+            {
+                context.Done<object>(null);
+            }
+        }
+
 
         [LuisIntent("Unlock AD")]
         public async Task UnlockADIntent(IDialogContext context, LuisResult result)
