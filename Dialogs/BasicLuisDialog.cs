@@ -18,6 +18,7 @@ namespace Microsoft.Bot.Sample.LuisBot
     [Serializable]
     public class BasicLuisDialog : LuisDialog<object>
     {
+        string sname = "";
         //private const string EntityOrganizationName = "organizationname";
         private const string EntitySamAccountName = "samaccountname";
         //private const string EntityUsertName = "username";
@@ -581,7 +582,7 @@ namespace Microsoft.Bot.Sample.LuisBot
 
         private async Task ResumeAfterPasswordClarification(IDialogContext context, IAwaitable<string> result)
         {
-            var sname = await result;
+            sname = await result;
             //PromptDialog.Text(context, ResumeAfterSamNameClarification, "What food do you want to order?");
             await context.PostAsync($"You entered {sname}.");
         }
