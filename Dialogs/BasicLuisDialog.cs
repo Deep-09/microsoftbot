@@ -16,15 +16,26 @@ namespace Microsoft.Bot.Sample.LuisBot
 {
     // For more information about this template visit http://aka.ms/azurebots-csharp-luis
     [Serializable]
-    public class BasicLuisDialog : LuisDialog<object>
+    public class BasicLuisDialog : LuisDialog<object> , ILuisOptions
     {
+        
         string oname = "";
         string sname = "";
         string uname = "";
         string dname = "";
         string pass = "";
 
-      
+        private const string EntitySamAccountName = "Hotel";
+
+        public bool? Log { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public bool? SpellCheck { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public bool? Staging { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public double? TimezoneOffset { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public bool? Verbose {
+            get => throw new NotImplementedException();
+            set => Verbose= true; }
+
+
 
 
         /*
@@ -108,9 +119,9 @@ namespace Microsoft.Bot.Sample.LuisBot
         {
             await this.ShowLuisResult(context, result);
         }
-    
+
         /*
-        //[LuisIntent("Add Account")]
+        [LuisIntent("Unlock AD")]
         public async Task Search(IDialogContext context, IAwaitable<IMessageActivity> activity, LuisResult result)
         {
             //var message = await activity;
@@ -138,7 +149,7 @@ namespace Microsoft.Bot.Sample.LuisBot
                 var message = "";
                 if (!string.IsNullOrEmpty(state.SamAccountName))
                 {
-                    var client = new RestClient("http://22ca0cca.ngrok.io/aeengine/rest/authenticate");
+                    var client = new RestClient("http://53d64268.ngrok.io/aeengine/rest/authenticate");
                     var request = new RestRequest(Method.POST);
                     request.AddHeader("postman-token", "ea502694-bf8a-9c2e-e27b-8082381ce137");
                     request.AddHeader("cache-control", "no-cache");
@@ -149,82 +160,30 @@ namespace Microsoft.Bot.Sample.LuisBot
                     jsonresult = response.Content;
                     var myDetails = JsonConvert.DeserializeObject<MyDetail>(jsonresult);
                     string token = myDetails.sessionToken;
-                    var request1 = new RestRequest("http://22ca0cca.ngrok.io/aeengine/rest/execute", Method.POST);
+                    var request1 = new RestRequest("http://53d64268.ngrok.io/aeengine/rest/execute", Method.POST);
                     request1.AddHeader("X-session-token", token);
 
                     JavaScriptSerializer serialiser = new JavaScriptSerializer();
                     List<AutomationParameter> ListAutomationField = new List<AutomationParameter>();
 
                     AutomationParameter parameter1 = new AutomationParameter();
-                    parameter1.name = "OrganizationUnit_Name";
-                    parameter1.value = "Automation";
+                    parameter1.name = "Sam_Account_Name";
+                    parameter1.value = result.Entities[0].Entity;
                     parameter1.type = "String";
                     parameter1.order = 1;
                     parameter1.secret = false;
                     parameter1.optional = false;
-                    parameter1.displayName = "OrganizationUnit_Name";
+                    parameter1.displayName = "Sam_Account_Name";
                     parameter1.extension = null;
                     parameter1.poolCredential = false;
 
                     ListAutomationField.Add(parameter1);
 
-                    AutomationParameter parameter2 = new AutomationParameter();
-                    parameter2.name = "SamAccount_Name";
-                    parameter2.value = state.SamAccountName;
-                    parameter2.type = "String";
-                    parameter2.order = 2;
-                    parameter2.secret = false;
-                    parameter2.optional = false;
-                    parameter2.displayName = "SamAccount_Name";
-                    parameter2.extension = null;
-                    parameter2.poolCredential = false;
-
-                    ListAutomationField.Add(parameter2);
-
-                    AutomationParameter parameter3 = new AutomationParameter();
-                    parameter3.name = "User_Name";
-                    parameter3.value = "Deep";
-                    parameter3.type = "String";
-                    parameter3.order = 3;
-                    parameter3.secret = false;
-                    parameter3.optional = false;
-                    parameter3.displayName = "User_Name";
-                    parameter3.extension = null;
-                    parameter3.poolCredential = false;
-
-                    ListAutomationField.Add(parameter3);
-
-                    AutomationParameter parameter4 = new AutomationParameter();
-                    parameter4.name = "Display_Name";
-                    parameter4.value = "Deep";
-                    parameter4.type = "String";
-                    parameter4.order = 4;
-                    parameter4.secret = false;
-                    parameter4.optional = false;
-                    parameter4.displayName = "Display_Name";
-                    parameter4.extension = null;
-                    parameter4.poolCredential = false;
-
-                    ListAutomationField.Add(parameter4);
-
-                    AutomationParameter parameter5 = new AutomationParameter();
-                    parameter5.name = "Password";
-                    parameter5.value = "Pune@123";
-                    parameter5.type = "String";
-                    parameter5.order = 4;
-                    parameter5.secret = false;
-                    parameter5.optional = false;
-                    parameter5.displayName = "Password";
-                    parameter5.extension = null;
-                    parameter5.poolCredential = false;
-
-                    ListAutomationField.Add(parameter5);
-
                     Guid temp = Guid.NewGuid();
 
                     RootAutomation AutoRoot = new RootAutomation();
                     AutoRoot.orgCode = "ACTIVEDIREC";
-                    AutoRoot.workflowName = "AD";
+                    AutoRoot.workflowName = "UnlockAD";
                     AutoRoot.userId = "Aishwarya Chaudhary";
                     AutoRoot.@params = ListAutomationField;
                     AutoRoot.sourceId = temp.ToString();
@@ -242,7 +201,7 @@ namespace Microsoft.Bot.Sample.LuisBot
                     IRestResponse response1 = client.Execute(request1);
 
                     //await context.PostAsync($"You reached {result.Intents[0].Intent} resonse is {response1.Content} .");
-                    message += $"I will create account for {state.SamAccountName} soon...";
+                    message += $"II will unlock account for  {state.SamAccountName} as soon as possible...";
 
                 }
                 
@@ -285,10 +244,10 @@ namespace Microsoft.Bot.Sample.LuisBot
                 context.Done<object>(null);
             }
         }
-        */
+       */ 
 
-        /*
-        //[LuisIntent("Unlock AD")]
+       
+        [LuisIntent("Unlock AD")]
         public async Task UnlockADIntent(IDialogContext context, LuisResult result)
         {
             var client = new RestClient("http://53d64268.ngrok.io/aeengine/rest/authenticate");
@@ -345,8 +304,8 @@ namespace Microsoft.Bot.Sample.LuisBot
             await context.PostAsync($"I will unlock account for {result.Entities[0].Entity} as soon as possible... Visit me again whenever you need my help. Have a great day.");
 
         }
-       */
-
+       
+        
         [LuisIntent("Add Virtual Machines")]
         public async Task AddVirtualMachinesIntent(IDialogContext context, LuisResult result)
         {
@@ -360,7 +319,7 @@ namespace Microsoft.Bot.Sample.LuisBot
 
         }
 
-        [LuisIntent("Unlock AD")]
+        [LuisIntent("Unlock AD Ask")]
         public async Task UnlockADIntent_Test(IDialogContext context, LuisResult result)
         {
             PromptDialog.Text(context, ResumeAfterSamNameUnlockClarification, "Pardon me I didn't get your Sam account name there :)... I'm hoping you can help me with it..");
@@ -369,7 +328,6 @@ namespace Microsoft.Bot.Sample.LuisBot
         private async Task ResumeAfterSamNameUnlockClarification(IDialogContext context, IAwaitable<string> result)
         {
             sname = await result;
-            //PromptDialog.Text(context, ResumeAfterSamNameClarification, "May I know sam name for your account");
             await context.PostAsync($"I will unlock account for {sname} as soon as possible... Visit me again whenever you need my help. Have a great day.");
         }
 
