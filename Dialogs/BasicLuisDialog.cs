@@ -220,7 +220,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             //await this.ShowLuisResult(context, result);
         }
 
-        [LuisIntent("Add Account")]
+        //[LuisIntent("Add Account")]
         public async Task Search(IDialogContext context, IAwaitable<IMessageActivity> activity, LuisResult result)
         {
             //var message = await activity;
@@ -544,39 +544,35 @@ namespace Microsoft.Bot.Sample.LuisBot
         {
             await this.ShowLuisResult(context, result);
         }
-        
+
+        [LuisIntent("Add Account")]
+        public async Task AddAccount(IDialogContext context, LuisResult result)
+        {
+            PromptDialog.Text(context, ResumeAfterOrgNameClarification, "Please give me your organization name ");
+        }
+
+        private async Task ResumeAfterOrgNameClarification(IDialogContext context, IAwaitable<string> result)
+        {
+            var oname = await result;
+            PromptDialog.Text(context, ResumeAfterSamNameClarification, "May I know your sam account name please");
+            //await context.PostAsync($"I see you want to order {food}.");
+        }
+
+        private async Task ResumeAfterSamNameClarification(IDialogContext context, IAwaitable<string> result)
+        {
+            var sname = await result;
+            //PromptDialog.Text(context, ResumeAfterSamNameClarification, "What food do you want to order?");
+            await context.PostAsync($"You entered {sname}.");
+        }
+
+
         private async Task ShowLuisResult(IDialogContext context, LuisResult result)
         {
             //string token = Authenticate();
             await context.PostAsync($"You reached {result.Intents[0].Intent} . ");
             context.Wait(MessageReceived);
         }
-        /*
-        public string Authenticate()
-        {
-            var client = new RestClient("https://c3663c91.ngrok.io/aeengine/rest/authenticate");
-            var request = new RestRequest(Method.POST);
-            request.AddHeader("postman-token", "ea502694-bf8a-9c2e-e27b-8082381ce137");
-            request.AddHeader("cache-control", "no-cache");
-            request.AddHeader("content-type", "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
-            request.AddParameter("multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW", "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"username\"\r\n\r\nFusionAdmin\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"password\"\r\n\r\nFusion@123\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--", ParameterType.RequestBody);
-            IRestResponse response = client.Execute(request);
-            string jsonresult;
-            jsonresult = response.Content;
-            var myDetails = JsonConvert.DeserializeObject<MyDetail>(jsonresult);
-            string token = myDetails.sessionToken;
-            var request1 = new RestRequest("http://c3663c91.ngrok.io/aeengine/rest/execute", Method.POST);
-            request1.AddHeader("X-session-token", token);
-            string body = "{\"orgCode\":\"FUSION\",\"workflowName\":\"Software Installation\",\"userId\":\"Admin Fusion\",\"sourceId\":\"SID_5b-777-21f4-88-880eb-8a0b-90\",\"source\":\"AutomationEdge HelpDesk\",\"responseMailSubject\":\"null\",\"params\":[{\"name\":\"software\",\"value\":\"JDK\",\"type\":\"String\",\"order\":1,\"secret\":false,\"optional\":false,\"defaultValue\":null,\"displayName\":\"Incident Number\",\"extension\":null,\"poolCredential\":false},{\"name\":\"slackChannel\",\"value\":\"fdgvdfg\",\"type\":\"String\",\"order\":2,\"secret\":false,\"optional\":false,\"defaultValue\":null,\"displayName\":\"Slack Channel\",\"extension\":null,\"poolCredential\":false}]}";
-            //var json = JsonConvert.SerializeObject(body);
-            request1.AddHeader("content-type", "application/json");
-            request1.AddParameter("application/json", body, ParameterType.RequestBody);
-            request1.RequestFormat = DataFormat.Json;
-            IRestResponse response1 = client.Execute(request1);
-            return response1.Content;
 
-        }
-        */
     }
     public class MyDetail
     {
