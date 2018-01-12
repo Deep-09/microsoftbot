@@ -18,12 +18,13 @@ namespace Microsoft.Bot.Sample.LuisBot
     [Serializable]
     public class BasicLuisDialog : LuisDialog<object>
     {
+        string oname = "";
         string sname = "";
-        //private const string EntityOrganizationName = "organizationname";
-        private const string EntitySamAccountName = "samaccountname";
-        //private const string EntityUsertName = "username";
-        //private const string EntityDisplayName = "displayname";
-        //private const string EntityPassword = "password";
+        string uname = "";
+        string dname = "";
+        string pass = "";
+
+      
 
 
         /*
@@ -554,35 +555,35 @@ namespace Microsoft.Bot.Sample.LuisBot
 
         private async Task ResumeAfterOrgNameClarification(IDialogContext context, IAwaitable<string> result)
         {
-            var oname = await result;
+            oname = await result;
             PromptDialog.Text(context, ResumeAfterSamNameClarification, "May I know sam name for your account");
             //await context.PostAsync($"I see you want to order {food}.");
         }
 
         private async Task ResumeAfterSamNameClarification(IDialogContext context, IAwaitable<string> result)
         {
-            var sname = await result;
+            sname = await result;
             PromptDialog.Text(context, ResumeAfterUserNameClarification, "Enter username of your choice");
             //await context.PostAsync($"You entered {sname}.");
         }
 
         private async Task ResumeAfterUserNameClarification(IDialogContext context, IAwaitable<string> result)
         {
-            var sname = await result;
+            uname = await result;
             PromptDialog.Text(context, ResumeAfterDispNameClarification, "What name would you like on display ");
             //await context.PostAsync($"You entered {sname}.");
         }
 
         private async Task ResumeAfterDispNameClarification(IDialogContext context, IAwaitable<string> result)
         {
-            var sname = await result;
+            dname = await result;
             PromptDialog.Text(context, ResumeAfterPasswordClarification, "And what password would you like to set?");
             //await context.PostAsync($"You entered {sname}.");
         }
 
         private async Task ResumeAfterPasswordClarification(IDialogContext context, IAwaitable<string> result)
         {
-            sname = await result;
+            pass = await result;
             //PromptDialog.Text(context, ResumeAfterSamNameClarification, "What food do you want to order?");
             await context.PostAsync($"You entered {sname}.");
         }
