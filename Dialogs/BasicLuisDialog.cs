@@ -221,7 +221,7 @@ namespace Microsoft.Bot.Sample.LuisBot
 
             //await this.ShowLuisResult(context, result);
         }
-
+        /*
         //[LuisIntent("Add Account")]
         public async Task Search(IDialogContext context, IAwaitable<IMessageActivity> activity, LuisResult result)
         {
@@ -456,7 +456,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             await context.PostAsync($"I will unlock account for {result.Entities[0].Entity} as soon as possible... Visit me again whenever you need my help. Have a great day.");
 
         }
-        
+        */
         [LuisIntent("Add Virtual Machines")]
         public async Task AddVirtualMachinesIntent(IDialogContext context, LuisResult result)
         {
