@@ -16,7 +16,7 @@ namespace Microsoft.Bot.Sample.LuisBot
 {
     // For more information about this template visit http://aka.ms/azurebots-csharp-luis
     [Serializable]
-    public class BasicLuisDialog : LuisDialog<object> , ILuisOptions
+    public class BasicLuisDialog : LuisDialog<object> //, ILuisOptions
     {
         
         string oname = "";
@@ -26,14 +26,18 @@ namespace Microsoft.Bot.Sample.LuisBot
         string pass = "";
 
         private const string EntitySamAccountName = "Hotel";
-
-        public bool? Log { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public bool? SpellCheck { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public bool? Staging { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public double? TimezoneOffset { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public bool? Verbose {
+        /*
+        bool? ILuisOptions.Log { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        bool? ILuisOptions.SpellCheck { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        bool? ILuisOptions.Staging { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        double? ILuisOptions.TimezoneOffset { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public bool? Verbose
+        {
             get => throw new NotImplementedException();
-            set => Verbose= true; }
+            set => Verbose = true;
+        }
+        */
+
 
 
 
@@ -250,7 +254,7 @@ namespace Microsoft.Bot.Sample.LuisBot
         [LuisIntent("Unlock AD")]
         public async Task UnlockADIntent(IDialogContext context, LuisResult result)
         {
-            var client = new RestClient("http://53d64268.ngrok.io/aeengine/rest/authenticate");
+            var client = new RestClient("http://96a7bf35.ngrok.io/aeengine/rest/authenticate");
             var request = new RestRequest(Method.POST);
             request.AddHeader("postman-token", "ea502694-bf8a-9c2e-e27b-8082381ce137");
             request.AddHeader("cache-control", "no-cache");
@@ -261,7 +265,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             jsonresult = response.Content;
             var myDetails = JsonConvert.DeserializeObject<MyDetail>(jsonresult);
             string token = myDetails.sessionToken;
-            var request1 = new RestRequest("http://53d64268.ngrok.io/aeengine/rest/execute", Method.POST);
+            var request1 = new RestRequest("http://96a7bf35.ngrok.io/aeengine/rest/execute", Method.POST);
             request1.AddHeader("X-session-token", token);
 
             JavaScriptSerializer serialiser = new JavaScriptSerializer();
@@ -371,7 +375,7 @@ namespace Microsoft.Bot.Sample.LuisBot
         {
             pass = await result;
 
-            var client = new RestClient("http://53d64268.ngrok.io/aeengine/rest/authenticate");
+            var client = new RestClient("http://96a7bf35.ngrok.io/aeengine/rest/authenticate");
             var request = new RestRequest(Method.POST);
             request.AddHeader("postman-token", "ea502694-bf8a-9c2e-e27b-8082381ce137");
             request.AddHeader("cache-control", "no-cache");
@@ -382,7 +386,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             jsonresult = response.Content;
             var myDetails = JsonConvert.DeserializeObject<MyDetail>(jsonresult);
             string token = myDetails.sessionToken;
-            var request1 = new RestRequest("http://53d64268.ngrok.io/aeengine/rest/execute", Method.POST);
+            var request1 = new RestRequest("http://96a7bf35.ngrok.io/aeengine/rest/execute", Method.POST);
             request1.AddHeader("X-session-token", token);
 
             JavaScriptSerializer serialiser = new JavaScriptSerializer();
