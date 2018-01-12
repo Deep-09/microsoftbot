@@ -550,7 +550,7 @@ namespace Microsoft.Bot.Sample.LuisBot
         [LuisIntent("Add Account")]
         public async Task AddAccount(IDialogContext context, LuisResult result)
         {
-            PromptDialog.Text(context, ResumeAfterOrgNameClarification, "Please give me your organization name ");
+            PromptDialog.Text(context, ResumeAfterOrgNameClarification, "Please give me your organization unit ");
         }
 
         private async Task ResumeAfterOrgNameClarification(IDialogContext context, IAwaitable<string> result)
@@ -690,7 +690,7 @@ namespace Microsoft.Bot.Sample.LuisBot
 
 
 
-            await context.PostAsync("I will create AD account for {sname} soon... Visim me again whenever you need my help... Have a good day :)");
+            await context.PostAsync($"I will create AD account for {sname} soon... Visim me again whenever you need my help... Have a good day :)");
         }
 
 
