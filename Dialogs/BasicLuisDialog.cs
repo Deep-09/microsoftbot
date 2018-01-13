@@ -12,11 +12,12 @@ using System.Collections.Generic;
 using Microsoft.Bot.Connector;
 using Microsoft.Bot.Builder.FormFlow;
 
+
 namespace Microsoft.Bot.Sample.LuisBot
 {
     // For more information about this template visit http://aka.ms/azurebots-csharp-luis
     [Serializable]
-    public class BasicLuisDialog : LuisDialog<object> //, ILuisOptions
+    public class BasicLuisDialog : LuisDialog<object>
     {
         
         string oname = "";
@@ -34,7 +35,6 @@ namespace Microsoft.Bot.Sample.LuisBot
         string VM_Name = "";
 
 
-        private const string EntitySamAccountName = "Hotel";
         /*
         bool? ILuisOptions.Log { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         bool? ILuisOptions.SpellCheck { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
@@ -101,12 +101,12 @@ namespace Microsoft.Bot.Sample.LuisBot
 
 
         public BasicLuisDialog() : base(new LuisService(new LuisModelAttribute(
-            ConfigurationManager.AppSettings["LuisAppId"], 
-            ConfigurationManager.AppSettings["LuisAPIKey"], 
+            ConfigurationManager.AppSettings["LuisAppId"],
+            ConfigurationManager.AppSettings["LuisAPIKey"],
             domain: ConfigurationManager.AppSettings["LuisAPIHostName"])))
         {
         }
-        /*
+
         [LuisIntent("None")]
         public async Task NoneIntent(IDialogContext context, LuisResult result)
         {
@@ -595,7 +595,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             await context.PostAsync($"I will create AD account for {sname} soon... Visim me again whenever you need my help... Have a good day :)");
         }
 
-
+        
         [LuisIntent("Add Virtual Machine")]
         public async Task AddVirtualMachinesIntent(IDialogContext context, LuisResult result)
         {
@@ -792,7 +792,12 @@ namespace Microsoft.Bot.Sample.LuisBot
 
             await context.PostAsync($"I will add VM names {VM_Name} soon... Visim me again whenever you need my help... Have a good day :)");
         }
-
+        
+        private async Task ShowLuisResult(IDialogContext context, LuisResult result)
+        {
+            await context.PostAsync($"You have reached {result.Intents[0].Intent}. You said: {result.Query}");
+            context.Wait(MessageReceived);
+        }
     }
     public class MyDetail
     {
