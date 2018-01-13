@@ -106,7 +106,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             domain: ConfigurationManager.AppSettings["LuisAPIHostName"])))
         {
         }
-
+        /*
         [LuisIntent("None")]
         public async Task NoneIntent(IDialogContext context, LuisResult result)
         {
@@ -115,12 +115,7 @@ namespace Microsoft.Bot.Sample.LuisBot
 
         // Go to https://luis.ai and create a new intent, then train/publish your luis app.
         // Finally replace "Gretting" with the name of your newly created intent in the following handler
-        [LuisIntent("Greeting")]
-        public async Task GreetingIntent(IDialogContext context, LuisResult result)
-        {
-            await context.PostAsync($"Hello! I am your IT Service Desk Virtual Assistant *Maggie* :) . I can help you with IT service related issues and requests. How may I help you today?");
-        }
-
+       
         [LuisIntent("Cancel")]
         public async Task CancelIntent(IDialogContext context, LuisResult result)
         {
@@ -257,9 +252,16 @@ namespace Microsoft.Bot.Sample.LuisBot
                 context.Done<object>(null);
             }
         }
-       */ 
+       */
 
-       
+
+        [LuisIntent("Greeting")]
+        public async Task GreetingIntent(IDialogContext context, LuisResult result)
+        {
+            await context.PostAsync($"Hello! I am your IT Service Desk Virtual Assistant *Maggie* :) . I can help you with IT service related issues and requests. How may I help you today?");
+        }
+
+
         [LuisIntent("Unlock AD")]
         public async Task UnlockADIntent(IDialogContext context, LuisResult result)
         {
