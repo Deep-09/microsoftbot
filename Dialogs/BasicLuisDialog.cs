@@ -21,7 +21,7 @@ namespace Microsoft.Bot.Sample.LuisBot
     {
         
         string oname = "";
-        string sname = null;
+        string sname ;
         string uname = "";
         string dname = "";
         string pass = "";
