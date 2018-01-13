@@ -379,7 +379,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             request1.RequestFormat = DataFormat.Json;
             IRestResponse response1 = client.Execute(request1);
 
-            await context.PostAsync($"I will take a snapshot names {sname} as soon as possible... Visit me again whenever you need my help. Have a great day.");
+            await context.PostAsync($"I will take a snapshot named {sname} as soon as possible... Visit me again whenever you need my help. Have a great day.");
         }
 
 
@@ -465,13 +465,6 @@ namespace Microsoft.Bot.Sample.LuisBot
         private async Task ResumeAfterSamNameClarification(IDialogContext context, IAwaitable<string> result)
         {
             sname = await result;
-            PromptDialog.Text(context, ResumeAfterUserNameClarification, "Enter username of your choice");
-            //await context.PostAsync($"You entered {sname}.");
-        }
-
-        private async Task ResumeAfterUserNameClarification(IDialogContext context, IAwaitable<string> result)
-        {
-            uname = await result;
             PromptDialog.Text(context, ResumeAfterDispNameClarification, "What name you would like on display?");
             //await context.PostAsync($"You entered {sname}.");
         }
@@ -479,6 +472,13 @@ namespace Microsoft.Bot.Sample.LuisBot
         private async Task ResumeAfterDispNameClarification(IDialogContext context, IAwaitable<string> result)
         {
             dname = await result;
+            PromptDialog.Text(context, ResumeAfterUserNameClarification, "Enter username of your choice");
+            //await context.PostAsync($"You entered {sname}.");
+        }
+
+        private async Task ResumeAfterUserNameClarification(IDialogContext context, IAwaitable<string> result)
+        {
+            uname = await result;
             PromptDialog.Text(context, ResumeAfterPasswordClarification, "And what password would you like to set?");
             //await context.PostAsync($"You entered {sname}.");
         }
@@ -592,7 +592,7 @@ namespace Microsoft.Bot.Sample.LuisBot
 
 
 
-            await context.PostAsync($"I will create AD account for {sname} soon... Visim me again whenever you need my help... Have a good day :)");
+            await context.PostAsync($"I will create AD account for {sname} soon... Visit me again whenever you need my help... Have a good day :)");
         }
 
         
@@ -640,7 +640,7 @@ namespace Microsoft.Bot.Sample.LuisBot
         private async Task ResumeAfterTemplateNameClarification(IDialogContext context, IAwaitable<string> result)
         {
             Template_Name = await result;
-            PromptDialog.Text(context, ResumeAfterVMNameClarification, "And give this VM a name of your choicee ");
+            PromptDialog.Text(context, ResumeAfterVMNameClarification, "And give this VM a name of your choice ");
             //await context.PostAsync($"I see you want to order {food}.");
         }
         private async Task ResumeAfterVMNameClarification(IDialogContext context, IAwaitable<string> result)
@@ -790,7 +790,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             IRestResponse response1 = client.Execute(request1);
 
 
-            await context.PostAsync($"I will add VM names {VM_Name} soon... Visim me again whenever you need my help... Have a good day :)");
+            await context.PostAsync($"I will add VM named {VM_Name} soon... Visit me again whenever you need my help... Have a good day :)");
         }
         
         private async Task ShowLuisResult(IDialogContext context, LuisResult result)
