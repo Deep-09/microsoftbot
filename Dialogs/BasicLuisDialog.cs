@@ -323,11 +323,7 @@ namespace Microsoft.Bot.Sample.LuisBot
         public async Task UnlockADIntent_Test(IDialogContext context, IAwaitable<string> result)
         {
             sname = await result;
-            if(sname == null)
-            {
-                PromptDialog.Text(context, ResumeAfterSamNameUnlockClarification, "Pardon me I didn't get your sam account name there :)... I'm hoping you can help me with it..");
-            }
-            else
+            if(sname != null)
             {
                 var client = new RestClient("http://96a7bf35.ngrok.io/aeengine/rest/authenticate");
                 var request = new RestRequest(Method.POST);
@@ -381,6 +377,10 @@ namespace Microsoft.Bot.Sample.LuisBot
                 IRestResponse response1 = client.Execute(request1);
 
                 await context.PostAsync($"I will unlock account for {sname} as soon as possible... Visit me again whenever you need my help. Have a great day :)");
+            }
+            else
+            {
+                PromptDialog.Text(context, ResumeAfterSamNameUnlockClarification, "Pardon me I didn't get your sam account name there :)... I'm hoping you can help me with it..");
             }
             
         }
