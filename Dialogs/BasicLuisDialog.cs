@@ -323,7 +323,7 @@ namespace Microsoft.Bot.Sample.LuisBot
         [LuisIntent("Add Snapshot")]
         public async Task AddSnapshotIntent_Test(IDialogContext context, LuisResult result)
         {
-            PromptDialog.Text(context, ResumeAfterSnapNameUnlockClarification, "Pardon me I didn't get your Snapshot Name there :)... I'm hoping you can help me with it..");
+            PromptDialog.Text(context, ResumeAfterSnapNameUnlockClarification, "Pardon me I didn't get your snapshot name there :)... I'm hoping you can help me with it..");
         }
         private async Task ResumeAfterSnapNameUnlockClarification(IDialogContext context, IAwaitable<string> result)
         {
@@ -387,7 +387,7 @@ namespace Microsoft.Bot.Sample.LuisBot
         [LuisIntent("Unlock AD Ask")]
         public async Task UnlockADIntent_Test(IDialogContext context, LuisResult result)
         {
-            PromptDialog.Text(context, ResumeAfterSamNameUnlockClarification, "Pardon me I didn't get your Sam Account Name there :)... I'm hoping you can help me with it..");
+            PromptDialog.Text(context, ResumeAfterSamNameUnlockClarification, "Pardon me I didn't get your sam account name there :)... I'm hoping you can help me with it..");
         }
 
         private async Task ResumeAfterSamNameUnlockClarification(IDialogContext context, IAwaitable<string> result)
