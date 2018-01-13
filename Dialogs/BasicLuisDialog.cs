@@ -379,7 +379,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             request1.RequestFormat = DataFormat.Json;
             IRestResponse response1 = client.Execute(request1);
 
-            await context.PostAsync($"I will take a snapshot named {sname} as soon as possible... Visit me again whenever you need my help. Have a great day:)");
+            await context.PostAsync($"I will take a snapshot named {sname} as soon as possible... Visit me again whenever you need my help. Have a great day :)");
         }
 
 
@@ -444,7 +444,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             request1.RequestFormat = DataFormat.Json;
             IRestResponse response1 = client.Execute(request1);
 
-            await context.PostAsync($"I will unlock account for {sname} as soon as possible... Visit me again whenever you need my help. Have a great day:)");
+            await context.PostAsync($"I will unlock account for {sname} as soon as possible... Visit me again whenever you need my help. Have a great day :)");
         }
 
 
@@ -592,7 +592,7 @@ namespace Microsoft.Bot.Sample.LuisBot
 
 
 
-            await context.PostAsync($"I will create AD account for {sname} soon... Visit me again whenever you need my help... Have a great day:)");
+            await context.PostAsync($"I will create AD account for {sname} soon... Visit me again whenever you need my help... Have a great day :)");
         }
 
         
