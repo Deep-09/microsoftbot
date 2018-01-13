@@ -21,7 +21,7 @@ namespace Microsoft.Bot.Sample.LuisBot
     {
         
         string oname = "";
-        string sname = "";
+        string sname = null;
         string uname = "";
         string dname = "";
         string pass = "";
@@ -33,73 +33,7 @@ namespace Microsoft.Bot.Sample.LuisBot
         string Datastore = "";
         string Template_Name = "";
         string VM_Name = "";
-
-
-        /*
-        bool? ILuisOptions.Log { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        bool? ILuisOptions.SpellCheck { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        bool? ILuisOptions.Staging { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        double? ILuisOptions.TimezoneOffset { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public bool? Verbose
-        {
-            get => throw new NotImplementedException();
-            set => Verbose = true;
-        }
-        */
-
-
-
-
-
-        /*
-        private const string SoftwareOption = "Software Installation";
-
-        //private const string ResetPasswordOption = "Reset Password";
-
-#pragma warning disable CS0114 // Member hides inherited member; missing override keyword
-        public async Task StartAsync(IDialogContext context)
-#pragma warning restore CS0114 // Member hides inherited member; missing override keyword
-        {
-            context.Wait(this.MessageReceivedAsync);
-        }
-
-        private async Task MessageReceivedAsync(IDialogContext context, IAwaitable<IMessageActivity> result)
-        {
-            PromptDialog.Choice(
-                context,
-                this.AfterChoiceSelected,
-                new[] { SoftwareOption},
-                "What do you want to do today?",
-                "I am sorry but I didn't understand that. I need you to select one of the options below",
-                attempts: 2);
-        }
-
-        private async Task AfterChoiceSelected(IDialogContext context, IAwaitable<string> result)
-        {
-            try
-            {
-                var selection = await result;
-
-                switch (selection)
-                {
-                    case SoftwareOption:
-                        await context.PostAsync("This functionality is not yet implemented! Try resetting your password.");
-                        await this.StartAsync(context);
-                        break;
-
-                    //case ResetPasswordOption:
-                        //context.Call(new ResetPasswordDialog(), this.AfterResetPassword);
-                        //break;
-                }
-            }
-            catch (TooManyAttemptsException)
-            {
-                await this.StartAsync(context);
-            }
-        }
-        */
-
-
+        
         public BasicLuisDialog() : base(new LuisService(new LuisModelAttribute(
             ConfigurationManager.AppSettings["LuisAppId"],
             ConfigurationManager.AppSettings["LuisAPIKey"],
@@ -262,9 +196,10 @@ namespace Microsoft.Bot.Sample.LuisBot
         }
 
 
-        [LuisIntent("Unlock AD")]
+        //[LuisIntent("Unlock AD")]
         public async Task UnlockADIntent(IDialogContext context, LuisResult result)
         {
+     
             var client = new RestClient("http://96a7bf35.ngrok.io/aeengine/rest/authenticate");
             var request = new RestRequest(Method.POST);
             request.AddHeader("postman-token", "ea502694-bf8a-9c2e-e27b-8082381ce137");
@@ -384,15 +319,74 @@ namespace Microsoft.Bot.Sample.LuisBot
 
 
 
-        [LuisIntent("Unlock AD Ask")]
+        [LuisIntent("Unlock AD")]
         public async Task UnlockADIntent_Test(IDialogContext context, LuisResult result)
         {
-            PromptDialog.Text(context, ResumeAfterSamNameUnlockClarification, "Pardon me I didn't get your sam account name there :)... I'm hoping you can help me with it..");
+            sname = result.Entities[0].Entity;
+            if(sname == null)
+            {
+                PromptDialog.Text(context, ResumeAfterSamNameUnlockClarification, "Pardon me I didn't get your sam account name there :)... I'm hoping you can help me with it..");
+            }
+            else
+            {
+                var client = new RestClient("http://96a7bf35.ngrok.io/aeengine/rest/authenticate");
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("postman-token", "ea502694-bf8a-9c2e-e27b-8082381ce137");
+                request.AddHeader("cache-control", "no-cache");
+                request.AddHeader("content-type", "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
+                request.AddParameter("multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW", "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"username\"\r\n\r\naishwarya\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"password\"\r\n\r\nPune@123\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--", ParameterType.RequestBody);
+                IRestResponse response = client.Execute(request);
+                string jsonresult;
+                jsonresult = response.Content;
+                var myDetails = JsonConvert.DeserializeObject<MyDetail>(jsonresult);
+                string token = myDetails.sessionToken;
+                var request1 = new RestRequest("http://96a7bf35.ngrok.io/aeengine/rest/execute", Method.POST);
+                request1.AddHeader("X-session-token", token);
+
+                JavaScriptSerializer serialiser = new JavaScriptSerializer();
+                List<AutomationParameter> ListAutomationField = new List<AutomationParameter>();
+
+                AutomationParameter parameter1 = new AutomationParameter();
+                parameter1.name = "Sam_Account_Name";
+                parameter1.value = sname;
+                parameter1.type = "String";
+                parameter1.order = 1;
+                parameter1.secret = false;
+                parameter1.optional = false;
+                parameter1.displayName = "Sam_Account_Name";
+                parameter1.extension = null;
+                parameter1.poolCredential = false;
+
+                ListAutomationField.Add(parameter1);
+
+                Guid temp = Guid.NewGuid();
+
+                RootAutomation AutoRoot = new RootAutomation();
+                AutoRoot.orgCode = "ACTIVEDIREC";
+                AutoRoot.workflowName = "UnlockAD";
+                AutoRoot.userId = "Aishwarya Chaudhary";
+                AutoRoot.@params = ListAutomationField;
+                AutoRoot.sourceId = temp.ToString();
+                AutoRoot.source = "AutomationEdge HelpDesk";
+                AutoRoot.responseMailSubject = null;
+                string json = serialiser.Serialize(AutoRoot);
+
+
+
+                //string body = "{\"orgCode\":\"FUSION\",\"workflowName\":\"Software Installation\",\"userId\":\"Admin Fusion\",\"sourceId\":\"SID_5b-912-21f4-88-880eb-8a0b-91\",\"source\":\"AutomationEdge HelpDesk\",\"responseMailSubject\":\"null\",\"params\":[{\"name\":\"software\",\"value\":\"JDK\",\"type\":\"String\",\"order\":1,\"secret\":false,\"optional\":false,\"defaultValue\":null,\"displayName\":\"Incident Number\",\"extension\":null,\"poolCredential\":false},{\"name\":\"slackChannel\",\"value\":\"fdgvdfg\",\"type\":\"String\",\"order\":2,\"secret\":false,\"optional\":false,\"defaultValue\":null,\"displayName\":\"Slack Channel\",\"extension\":null,\"poolCredential\":false}]}";
+                //var json = JsonConvert.SerializeObject(body);
+                request1.AddHeader("content-type", "application/json");
+                request1.AddParameter("application/json", json, ParameterType.RequestBody);
+                request1.RequestFormat = DataFormat.Json;
+                IRestResponse response1 = client.Execute(request1);
+
+                await context.PostAsync($"I will unlock account for {sname} as soon as possible... Visit me again whenever you need my help. Have a great day :)");
+            }
+            
         }
 
         private async Task ResumeAfterSamNameUnlockClarification(IDialogContext context, IAwaitable<string> result)
         {
-            sname = await result;
             var client = new RestClient("http://96a7bf35.ngrok.io/aeengine/rest/authenticate");
             var request = new RestRequest(Method.POST);
             request.AddHeader("postman-token", "ea502694-bf8a-9c2e-e27b-8082381ce137");
