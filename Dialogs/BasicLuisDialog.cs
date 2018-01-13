@@ -320,9 +320,9 @@ namespace Microsoft.Bot.Sample.LuisBot
 
 
         [LuisIntent("Unlock AD")]
-        public async Task UnlockADIntent_Test(IDialogContext context, LuisResult result)
+        public async Task UnlockADIntent_Test(IDialogContext context, IAwaitable<string> result)
         {
-            sname = result.Entities[0].Entity;
+            sname = await result;
             if(sname == null)
             {
                 PromptDialog.Text(context, ResumeAfterSamNameUnlockClarification, "Pardon me I didn't get your sam account name there :)... I'm hoping you can help me with it..");
