@@ -196,7 +196,7 @@ namespace Microsoft.Bot.Sample.LuisBot
         }
 
 
-        //[LuisIntent("Unlock AD")]
+        [LuisIntent("Unlock AD")]
         public async Task UnlockADIntent(IDialogContext context, LuisResult result)
         {
      
@@ -258,7 +258,7 @@ namespace Microsoft.Bot.Sample.LuisBot
         [LuisIntent("Add Snapshot")]
         public async Task AddSnapshotIntent_Test(IDialogContext context, LuisResult result)
         {
-            PromptDialog.Text(context, ResumeAfterVMNameClarification, "Please give me yourVM name ");
+            PromptDialog.Text(context, ResumeAfterVMNameClarification, "Please give me your VM name ");
         }
         private async Task ResumeAfterVMNameClarification(IDialogContext context, IAwaitable<string> result)
         {
