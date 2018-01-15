@@ -263,7 +263,7 @@ namespace Microsoft.Bot.Sample.LuisBot
         private async Task ResumeAfterVMNameClarification(IDialogContext context, IAwaitable<string> result)
         {
             VM_Name = await result;
-            PromptDialog.Text(context, ResumeAfterSnapNameUnlockClarification, "I didn't get your snapshot name :)... I'm hoping you can help me with it..");
+            PromptDialog.Text(context, ResumeAfterSnapNameUnlockClarification, "With what name you want me to save this snap?");
             //await context.PostAsync($"You entered {sname}.");
         }
         private async Task ResumeAfterSnapNameUnlockClarification(IDialogContext context, IAwaitable<string> result)
@@ -288,7 +288,7 @@ namespace Microsoft.Bot.Sample.LuisBot
 
             AutomationParameter parameter1 = new AutomationParameter();
             parameter1.name = "VM_Name";
-            parameter1.value = sname;
+            parameter1.value = VM_Name;
             parameter1.type = "String";
             parameter1.order = 1;
             parameter1.secret = false;
