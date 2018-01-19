@@ -33,7 +33,9 @@ namespace Microsoft.Bot.Sample.LuisBot
         string Datastore = "";
         string Template_Name = "";
         string VM_Name = "";
-        
+        private const string EntitySamAccountName = "samaccountname";
+
+
         public BasicLuisDialog() : base(new LuisService(new LuisModelAttribute(
             ConfigurationManager.AppSettings["LuisAppId"],
             ConfigurationManager.AppSettings["LuisAPIKey"],
@@ -62,7 +64,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             await this.ShowLuisResult(context, result);
         }
 
-        /*
+        
         [LuisIntent("Unlock AD")]
         public async Task Search(IDialogContext context, IAwaitable<IMessageActivity> activity, LuisResult result)
         {
@@ -110,7 +112,7 @@ namespace Microsoft.Bot.Sample.LuisBot
 
                     AutomationParameter parameter1 = new AutomationParameter();
                     parameter1.name = "Sam_Account_Name";
-                    parameter1.value = result.Entities[0].Entity;
+                    parameter1.value = state.SamAccountName;
                     parameter1.type = "String";
                     parameter1.order = 1;
                     parameter1.secret = false;
@@ -186,7 +188,7 @@ namespace Microsoft.Bot.Sample.LuisBot
                 context.Done<object>(null);
             }
         }
-       */
+       
 
 
         [LuisIntent("Greeting")]
@@ -196,7 +198,7 @@ namespace Microsoft.Bot.Sample.LuisBot
         }
 
 
-        [LuisIntent("Unlock AD")]
+        //[LuisIntent("Unlock AD")]
         public async Task UnlockADIntent(IDialogContext context, LuisResult result)
         {
      
@@ -338,7 +340,7 @@ namespace Microsoft.Bot.Sample.LuisBot
 
 
 
-        [LuisIntent("Unlock AD Ask")]
+        //[LuisIntent("Unlock AD Ask")]
         public async Task UnlockADIntent_Test(IDialogContext context, LuisResult result)
         {
             PromptDialog.Text(context, ResumeAfterSamNameUnlockClarification, "Pardon me I didn't get your sam account name there :)... I'm hoping you can help me with it..");
