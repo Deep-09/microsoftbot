@@ -93,7 +93,7 @@ namespace Microsoft.Bot.Sample.LuisBot
                 var message = "";
                 if (!string.IsNullOrEmpty(state.SamAccountName))
                 {
-                    var client = new RestClient("http://53d64268.ngrok.io/aeengine/rest/authenticate");
+                    var client = new RestClient("http://96a7bf35.ngrok.io/aeengine/rest/authenticate");
                     var request = new RestRequest(Method.POST);
                     request.AddHeader("postman-token", "ea502694-bf8a-9c2e-e27b-8082381ce137");
                     request.AddHeader("cache-control", "no-cache");
@@ -104,7 +104,7 @@ namespace Microsoft.Bot.Sample.LuisBot
                     jsonresult = response.Content;
                     var myDetails = JsonConvert.DeserializeObject<MyDetail>(jsonresult);
                     string token = myDetails.sessionToken;
-                    var request1 = new RestRequest("http://53d64268.ngrok.io/aeengine/rest/execute", Method.POST);
+                    var request1 = new RestRequest("http://96a7bf35.ngrok.io/aeengine/rest/execute", Method.POST);
                     request1.AddHeader("X-session-token", token);
 
                     JavaScriptSerializer serialiser = new JavaScriptSerializer();
