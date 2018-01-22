@@ -77,7 +77,7 @@ namespace Microsoft.Bot.Sample.LuisBot
 
             if (result.TryFindEntity(EntitySamAccountName, out samaccountnameEntityRecommendation))
             {
-                samaccountnameEntityRecommendation.Type = "samaccountname";
+                samaccountnameEntityRecommendation.Type = "SamAccountName";
             }
 
             var hotelsFormDialog = new FormDialog<HotelsQuery>(hotelsQuery, this.BuildHotelsForm, FormOptions.PromptInStart, result.Entities);
