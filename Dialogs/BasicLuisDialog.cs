@@ -113,7 +113,7 @@ namespace Microsoft.Bot.Sample.LuisBot
 
                     AutomationParameter parameter1 = new AutomationParameter();
                     parameter1.name = "Sam_Account_Name";
-                    parameter1.value = state.SamAccountName\;
+                    parameter1.value = state.SamAccountName;
                     parameter1.type = "String";
                     parameter1.order = 1;
                     parameter1.secret = false;
