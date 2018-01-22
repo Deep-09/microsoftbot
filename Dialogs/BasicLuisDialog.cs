@@ -95,7 +95,8 @@ namespace Microsoft.Bot.Sample.LuisBot
                     message += $"I will unlock account for  {state.SamAccountName} as soon as possible...";
 
                 }
-                
+                await context.PostAsync(message);
+
             };
 
             return new FormBuilder<HotelsQuery>()
