@@ -146,7 +146,6 @@ namespace Microsoft.Bot.Sample.LuisBot
                     IRestResponse response1 = client.Execute(request1);
 
                     //await context.PostAsync($"You reached {result.Intents[0].Intent} resonse is {response1.Content} .");
-                    await context.PostAsync($"{response1.Content}");
                 }
                 await context.PostAsync(message);
 
