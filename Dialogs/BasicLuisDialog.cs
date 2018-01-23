@@ -391,6 +391,8 @@ namespace Microsoft.Bot.Sample.LuisBot
             innerjsonobject.serviceRequestName = "Creating Snapshot";
             innerjsonobject.@params = InnerJsonParam;
 
+            string json1 = serialiser.Serialize(innerjsonobject);
+
             AutomationParameter parameter1 = new AutomationParameter();
             parameter1.name = "jsonInput";
             parameter1.value = innerjsonobject;
@@ -428,7 +430,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             AutoRoot.source = "AutomationEdge HelpDesk";
             AutoRoot.responseMailSubject = null;
             string json = serialiser.Serialize(AutoRoot);
-            await context.PostAsync($"{json}");
+            await context.PostAsync($"{json1}");
 
 
             //string body = "{\"orgCode\":\"FUSION\",\"workflowName\":\"Software Installation\",\"userId\":\"Admin Fusion\",\"sourceId\":\"SID_5b-912-21f4-88-880eb-8a0b-91\",\"source\":\"AutomationEdge HelpDesk\",\"responseMailSubject\":\"null\",\"params\":[{\"name\":\"software\",\"value\":\"JDK\",\"type\":\"String\",\"order\":1,\"secret\":false,\"optional\":false,\"defaultValue\":null,\"displayName\":\"Incident Number\",\"extension\":null,\"poolCredential\":false},{\"name\":\"slackChannel\",\"value\":\"fdgvdfg\",\"type\":\"String\",\"order\":2,\"secret\":false,\"optional\":false,\"defaultValue\":null,\"displayName\":\"Slack Channel\",\"extension\":null,\"poolCredential\":false}]}";
