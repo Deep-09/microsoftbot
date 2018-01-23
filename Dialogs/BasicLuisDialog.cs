@@ -395,7 +395,7 @@ namespace Microsoft.Bot.Sample.LuisBot
 
             AutomationParameter parameter1 = new AutomationParameter();
             parameter1.name = "jsonInput";
-            parameter1.value = innerjsonobject;
+            parameter1.value = json1;
             parameter1.type = "String";
             parameter1.order = 1;
             parameter1.secret = false;
