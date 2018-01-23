@@ -388,7 +388,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             InnerJsonParam.Add(jparameter2);
 
             InnerJson innerjsonobject = new InnerJson();
-            innerjsonobject.serviceRequestName = "Creating Snapshot";
+            innerjsonobject.ServiceRequest = "Creating Snapshot";
             innerjsonobject.@params = InnerJsonParam;
 
             string json1 = serialiser.Serialize(innerjsonobject);
