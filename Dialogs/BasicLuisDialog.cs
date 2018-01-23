@@ -421,7 +421,7 @@ namespace Microsoft.Bot.Sample.LuisBot
 
             RootAutomation AutoRoot = new RootAutomation();
             AutoRoot.orgCode = "ACTIVEDIREC";
-            AutoRoot.workflowName = "createSnap";
+            AutoRoot.workflowName = "CreateServiceRequestInRemedyForce";
             AutoRoot.userId = "Aishwarya Chaudhary";
             AutoRoot.@params = ListAutomationField;
             AutoRoot.sourceId = temp.ToString();
