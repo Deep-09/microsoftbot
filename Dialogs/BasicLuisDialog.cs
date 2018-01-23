@@ -111,39 +111,64 @@ namespace Microsoft.Bot.Sample.LuisBot
                     JavaScriptSerializer serialiser = new JavaScriptSerializer();
                     List<AutomationParameter> ListAutomationField = new List<AutomationParameter>();
 
+                    List<JsonParam> InnerJsonParam = new List<JsonParam>();
+                    JsonParam jparameter1 = new JsonParam();
+                    jparameter1.question = "Sam_Account_Name";
+                    jparameter1.answer = state.SamAccountName;
+                    InnerJsonParam.Add(jparameter1);
+
+                    InnerJson innerjsonobject = new InnerJson();
+                    innerjsonobject.ServiceRequest = "Unlock AD Account";
+                    innerjsonobject.@params = InnerJsonParam;
+
+                    string json1 = serialiser.Serialize(innerjsonobject);
+
                     AutomationParameter parameter1 = new AutomationParameter();
-                    parameter1.name = "Sam_Account_Name";
-                    parameter1.value = state.SamAccountName;
+                    parameter1.name = "jsonInput";
+                    parameter1.value = json1;
                     parameter1.type = "String";
                     parameter1.order = 1;
                     parameter1.secret = false;
                     parameter1.optional = false;
-                    parameter1.displayName = "Sam_Account_Name";
+                    parameter1.displayName = "jsonInput";
                     parameter1.extension = null;
                     parameter1.poolCredential = false;
 
                     ListAutomationField.Add(parameter1);
 
+                    AutomationParameter parameter2 = new AutomationParameter();
+                    parameter2.name = "clientEmail";
+                    parameter2.value = "satyendar.daragani@3i-infotech.com";
+                    parameter2.type = "String";
+                    parameter2.order = 2;
+                    parameter2.secret = false;
+                    parameter2.optional = false;
+                    parameter2.displayName = "snapshotname";
+                    parameter2.extension = null;
+                    parameter2.poolCredential = false;
+
+                    ListAutomationField.Add(parameter2);
+
                     Guid temp = Guid.NewGuid();
 
                     RootAutomation AutoRoot = new RootAutomation();
                     AutoRoot.orgCode = "ACTIVEDIREC";
-                    AutoRoot.workflowName = "UnlockAD";
+                    AutoRoot.workflowName = "CreateServiceRequestInRemedyForce";
                     AutoRoot.userId = "Aishwarya Chaudhary";
                     AutoRoot.@params = ListAutomationField;
                     AutoRoot.sourceId = temp.ToString();
                     AutoRoot.source = "AutomationEdge HelpDesk";
                     AutoRoot.responseMailSubject = null;
                     string json = serialiser.Serialize(AutoRoot);
+                    //await context.PostAsync($"{json}");
 
 
 
-                    //string body = "{\"orgCode\":\"FUSION\",\"workflowName\":\"Software Installation\",\"userId\":\"Admin Fusion\",\"sourceId\":\"SID_5b-912-21f4-88-880eb-8a0b-91\",\"source\":\"AutomationEdge HelpDesk\",\"responseMailSubject\":\"null\",\"params\":[{\"name\":\"software\",\"value\":\"JDK\",\"type\":\"String\",\"order\":1,\"secret\":false,\"optional\":false,\"defaultValue\":null,\"displayName\":\"Incident Number\",\"extension\":null,\"poolCredential\":false},{\"name\":\"slackChannel\",\"value\":\"fdgvdfg\",\"type\":\"String\",\"order\":2,\"secret\":false,\"optional\":false,\"defaultValue\":null,\"displayName\":\"Slack Channel\",\"extension\":null,\"poolCredential\":false}]}";
-                    //var json = JsonConvert.SerializeObject(body);
                     request1.AddHeader("content-type", "application/json");
                     request1.AddParameter("application/json", json, ParameterType.RequestBody);
                     request1.RequestFormat = DataFormat.Json;
                     IRestResponse response1 = client.Execute(request1);
+                    //await context.PostAsync($"{response1.Content}");
 
                     //await context.PostAsync($"You reached {result.Intents[0].Intent} resonse is {response1.Content} .");
                 }
@@ -430,16 +455,15 @@ namespace Microsoft.Bot.Sample.LuisBot
             AutoRoot.source = "AutomationEdge HelpDesk";
             AutoRoot.responseMailSubject = null;
             string json = serialiser.Serialize(AutoRoot);
-            await context.PostAsync($"{json}");
+            //await context.PostAsync($"{json}");
 
 
-            //string body = "{\"orgCode\":\"FUSION\",\"workflowName\":\"Software Installation\",\"userId\":\"Admin Fusion\",\"sourceId\":\"SID_5b-912-21f4-88-880eb-8a0b-91\",\"source\":\"AutomationEdge HelpDesk\",\"responseMailSubject\":\"null\",\"params\":[{\"name\":\"software\",\"value\":\"JDK\",\"type\":\"String\",\"order\":1,\"secret\":false,\"optional\":false,\"defaultValue\":null,\"displayName\":\"Incident Number\",\"extension\":null,\"poolCredential\":false},{\"name\":\"slackChannel\",\"value\":\"fdgvdfg\",\"type\":\"String\",\"order\":2,\"secret\":false,\"optional\":false,\"defaultValue\":null,\"displayName\":\"Slack Channel\",\"extension\":null,\"poolCredential\":false}]}";
-            //var json = JsonConvert.SerializeObject(body);
+            
             request1.AddHeader("content-type", "application/json");
             request1.AddParameter("application/json", json, ParameterType.RequestBody);
             request1.RequestFormat = DataFormat.Json;
             IRestResponse response1 = client.Execute(request1);
-            await context.PostAsync($"{response1.Content}");
+            //await context.PostAsync($"{response1.Content}");
             await context.PostAsync($"I will take a snapshot named {sname} as soon as possible... Visit me again whenever you need my help. Have a great day :)");
         }
 
