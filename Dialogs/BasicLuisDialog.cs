@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Configuration;
 using System.Threading.Tasks;
 using RestSharp;
@@ -234,6 +234,37 @@ namespace Microsoft.Bot.Sample.LuisBot
 
         }
 
+        [LuisIntent("Creating Snapshot")]
+        public async Task AddSnapshotIntent(IDialogContext context, LuisResult result)
+        {
+
+            await this.AECallAsync(context, result);
+
+            await context.PostAsync($"I will take a snapshot named {result.Entities[0].Entity} as soon as possible... Visit me again whenever you need my help. Have a great day :)");
+
+        }
+
+        [LuisIntent("Creating Active Directory User")]
+        public async Task AddAccount(IDialogContext context, LuisResult result)
+        {
+
+            await this.AECallAsync(context, result);
+
+            await context.PostAsync($"I will create AD account for {sname} soon... Visit me again whenever you need my help... Have a great day :)");
+
+        }
+
+        [LuisIntent("Create Virtual Machine​​")]
+        public async Task AddVirtualMachineIntent(IDialogContext context, LuisResult result)
+        {
+
+            await this.AECallAsync(context, result);
+
+            await context.PostAsync($"I will unlock account for {result.Entities[0].Entity} as soon as possible... Visit me again whenever you need my help. Have a great day:)");
+
+        }
+
+
 
         [LuisIntent("Creating Snapshot")]
         public async Task AddSnapshotIntent_Test(IDialogContext context, LuisResult result)
@@ -258,7 +289,7 @@ namespace Microsoft.Bot.Sample.LuisBot
         }
 
         [LuisIntent("Creating Active Directory User")]
-        public async Task AddAccount(IDialogContext context, LuisResult result)
+        public async Task AddAccount_Test(IDialogContext context, LuisResult result)
         {
             intentsr = result.Intents[0].Intent;
             PromptDialog.Text(context, ResumeAfterOrgNameClarification, "Give me your organization unit please ");
@@ -305,7 +336,7 @@ namespace Microsoft.Bot.Sample.LuisBot
         }
         
         [LuisIntent("Create Virtual Machine")]
-        public async Task AddVirtualMachinesIntent(IDialogContext context, LuisResult result)
+        public async Task AddVirtualMachinesIntent_Test(IDialogContext context, LuisResult result)
         {
             intentsr = result.Intents[0].Intent;
             PromptDialog.Text(context, ResumeAftervcenterIPClarification, "Give me your vCenter IP please ");
