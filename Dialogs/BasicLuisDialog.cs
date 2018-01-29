@@ -821,6 +821,8 @@ namespace Microsoft.Bot.Sample.LuisBot
 
         private async Task AECallAsync(IDialogContext context, LuisResult result)
         {
+
+            await context.PostAsync($"{result.Intents[0].Intent}");
             count = result.Entities.Count;
 
             var client = new RestClient("http://96a7bf35.ngrok.io/aeengine/rest/authenticate");
@@ -864,7 +866,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             */
 
             InnerJson innerjsonobject = new InnerJson();
-            innerjsonobject.ServiceRequest = result.Intents[0].Intent;
+            innerjsonobject.ServiceRequest = "Creating Snapshot";
             innerjsonobject.@params = InnerJsonParam;
 
             string json1 = serialiser.Serialize(innerjsonobject);
