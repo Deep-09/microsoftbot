@@ -228,17 +228,16 @@ namespace Microsoft.Bot.Sample.LuisBot
         public async Task UnlockADIntent(IDialogContext context, LuisResult result)
         {
 
-            
             await this.AECallAsync(context, result);
 
             await context.PostAsync($"I will unlock account for {result.Entities[0].Entity} as soon as possible... Visit me again whenever you need my help. Have a great day:)");
 
         }
-       
-        
+
+
         /*
 
-        [LuisIntent("Add Snapshot")]
+        [LuisIntent("Creating Snapshot")]
         public async Task AddSnapshotIntent_Test(IDialogContext context, LuisResult result)
         {
             
@@ -358,6 +357,7 @@ namespace Microsoft.Bot.Sample.LuisBot
         private async Task ResumeAfterOrgNameClarification(IDialogContext context, IAwaitable<string> result)
         {
             oname = await result;
+            MyEntities.Add("OrganizationUnit_Name", oname);
             PromptDialog.Text(context, ResumeAfterSamNameClarification, "May I know sam name for your account");
             //await context.PostAsync($"I see you want to order {food}.");
         }
@@ -365,6 +365,7 @@ namespace Microsoft.Bot.Sample.LuisBot
         private async Task ResumeAfterSamNameClarification(IDialogContext context, IAwaitable<string> result)
         {
             sname = await result;
+            MyEntities.Add("SamAccount_Name", sname);
             PromptDialog.Text(context, ResumeAfterDispNameClarification, "What name you would like on display?");
             //await context.PostAsync($"You entered {sname}.");
         }
@@ -372,6 +373,7 @@ namespace Microsoft.Bot.Sample.LuisBot
         private async Task ResumeAfterDispNameClarification(IDialogContext context, IAwaitable<string> result)
         {
             dname = await result;
+            MyEntities.Add("Display_Name", dname);
             PromptDialog.Text(context, ResumeAfterUserNameClarification, "Enter username of your choice");
             //await context.PostAsync($"You entered {sname}.");
         }
@@ -379,6 +381,7 @@ namespace Microsoft.Bot.Sample.LuisBot
         private async Task ResumeAfterUserNameClarification(IDialogContext context, IAwaitable<string> result)
         {
             uname = await result;
+            MyEntities.Add("User_Name", uname);
             PromptDialog.Text(context, ResumeAfterPasswordClarification, "And what password would you like to set?");
             //await context.PostAsync($"You entered {sname}.");
         }
@@ -386,7 +389,10 @@ namespace Microsoft.Bot.Sample.LuisBot
         private async Task ResumeAfterPasswordClarification(IDialogContext context, IAwaitable<string> result)
         {
             pass = await result;
+            MyEntities.Add("Password", pass);
+            await this.AECallAsync(context, result);
 
+            /*
             var client = new RestClient("http://96a7bf35.ngrok.io/aeengine/rest/authenticate");
             var request = new RestRequest(Method.POST);
             request.AddHeader("postman-token", "ea502694-bf8a-9c2e-e27b-8082381ce137");
@@ -564,49 +570,65 @@ namespace Microsoft.Bot.Sample.LuisBot
         private async Task ResumeAftervcenterIPClarification(IDialogContext context, IAwaitable<string> result)
         {
             vcenter_IP = await result;
+            MyEntities.Add("vcenter_IP", vcenter_IP);
             PromptDialog.Text(context, ResumeAfterPortClarification, "May I know port number for the same ");
             //await context.PostAsync($"I see you want to order {food}.");
         }
         private async Task ResumeAfterPortClarification(IDialogContext context, IAwaitable<string> result)
         {
+            
             Port = await result;
+            MyEntities.Add("Port", Port);
             PromptDialog.Text(context, ResumeAfterAdminUsernameClarification, "Please enter your admin username below ");
             //await context.PostAsync($"I see you want to order {food}.");
         }
         private async Task ResumeAfterAdminUsernameClarification(IDialogContext context, IAwaitable<string> result)
         {
+            
             Admin_Username = await result;
+            MyEntities.Add("Admin_Username", Admin_Username);
             PromptDialog.Text(context, ResumeAfterAdminPasswordClarification, "Can I have password for the same ");
             //await context.PostAsync($"I see you want to order {food}.");
         }
         private async Task ResumeAfterAdminPasswordClarification(IDialogContext context, IAwaitable<string> result)
         {
+            
             Admin_Password = await result;
+            MyEntities.Add("Admin_Password", Admin_Password);
             PromptDialog.Text(context, ResumeAfterVMHostIPClarification, "Give me VM Host IP please ");
             //await context.PostAsync($"I see you want to order {food}.");
         }
         private async Task ResumeAfterVMHostIPClarification(IDialogContext context, IAwaitable<string> result)
         {
+            
             VMHost_IP = await result;
+            MyEntities.Add("VMHost_IP", VMHost_IP);
             PromptDialog.Text(context, ResumeAfterDatastoreClarification, "Datastore name please");
             //await context.PostAsync($"I see you want to order {food}.");
         }
         private async Task ResumeAfterDatastoreClarification(IDialogContext context, IAwaitable<string> result)
         {
+            
             Datastore = await result;
+            MyEntities.Add("Datastore", Datastore);
             PromptDialog.Text(context, ResumeAfterTemplateNameClarification, "Give template a name of your choice ");
             //await context.PostAsync($"I see you want to order {food}.");
         }
         private async Task ResumeAfterTemplateNameClarification(IDialogContext context, IAwaitable<string> result)
         {
+            
             Template_Name = await result;
+            MyEntities.Add("Template_Name", Template_Name);
             PromptDialog.Text(context, ResumeAfterVMName1Clarification, "And give this VM a name of your choice ");
             //await context.PostAsync($"I see you want to order {food}.");
         }
         private async Task ResumeAfterVMName1Clarification(IDialogContext context, IAwaitable<string> result)
         {
             VM_Name = await result;
+            MyEntities.Add("VM_Name", VM_Name);
+            await this.AECallAsync(context, result);
 
+            /*
             var client = new RestClient("http://96a7bf35.ngrok.io/aeengine/rest/authenticate");
             var request = new RestRequest(Method.POST);
             request.AddHeader("postman-token", "ea502694-bf8a-9c2e-e27b-8082381ce137");
@@ -748,7 +770,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             request1.AddParameter("application/json", json, ParameterType.RequestBody);
             request1.RequestFormat = DataFormat.Json;
             IRestResponse response1 = client.Execute(request1);
-
+            */
 
             await context.PostAsync($"I will add VM named {VM_Name} soon... Visit me again whenever you need my help... Have a great day :)");
         }
@@ -887,6 +909,7 @@ namespace Microsoft.Bot.Sample.LuisBot
                 jparameter[i].answer = MyEntities.ElementAt(i).Value;
                 InnerJsonParam.Add(jparameter[i]);
             }
+            MyEntities.Clear();
 
             /*
             JsonParam jparameter1 = new JsonParam();
