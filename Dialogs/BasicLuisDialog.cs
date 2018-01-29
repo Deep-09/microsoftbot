@@ -222,7 +222,7 @@ namespace Microsoft.Bot.Sample.LuisBot
         }
 
         
-        [LuisIntent("Unlock AD")]
+        [LuisIntent("Unlock AD Account")]
         public async Task UnlockADIntent(IDialogContext context, LuisResult result)
         {
 
@@ -866,7 +866,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             */
 
             InnerJson innerjsonobject = new InnerJson();
-            innerjsonobject.ServiceRequest = "Creating Snapshot";
+            innerjsonobject.ServiceRequest = result.Intents[0].Intent;
             innerjsonobject.@params = InnerJsonParam;
 
             string json1 = serialiser.Serialize(innerjsonobject);
