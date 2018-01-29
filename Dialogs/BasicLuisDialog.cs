@@ -507,7 +507,7 @@ namespace Microsoft.Bot.Sample.LuisBot
                 jparameter[i].answer = MyEntities.ElementAt(i).Value;
                 InnerJsonParam.Add(jparameter[i]);
             }
-            MyEntities.Clear();
+            
 
             /*
             JsonParam jparameter1 = new JsonParam();
