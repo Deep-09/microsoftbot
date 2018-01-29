@@ -864,7 +864,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             */
 
             InnerJson innerjsonobject = new InnerJson();
-            innerjsonobject.ServiceRequest = "Creating Snapshot";
+            innerjsonobject.ServiceRequest = result.Intents[0].Intent;
             innerjsonobject.@params = InnerJsonParam;
 
             string json1 = serialiser.Serialize(innerjsonobject);
