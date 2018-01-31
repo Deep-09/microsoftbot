@@ -187,11 +187,14 @@
     <Compile Include="Dialogs\BasicLuisDialog.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Dialogs\AutomationParameter.cs" />
+    <Compile Include="Dialogs\CreateVirtualMachine​​Action.cs" />
+    <Compile Include="Dialogs\CreatingActiveDirectoryUserAction.cs" />
     <Compile Include="Dialogs\CreatingSnapshotAction.cs" />
     <Compile Include="Dialogs\HotelsQuery.cs" />
     <Compile Include="Dialogs\InnerJson.cs" />
     <Compile Include="Dialogs\JsonParam.cs" />
     <Compile Include="Dialogs\RootAutomation.cs" />
+    <Compile Include="Dialogs\UnlockADAccountAction.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

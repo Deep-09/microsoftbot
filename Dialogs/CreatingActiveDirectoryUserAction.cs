@@ -1,27 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Script.Serialization;
-using LuisBot.Dialogs;
+using Microsoft.Bot.Sample.LuisBot;
 using Microsoft.Cognitive.LUIS.ActionBinding;
 using Newtonsoft.Json;
 using RestSharp;
 
-namespace Microsoft.Bot.Sample.LuisBot
+namespace LuisBot.Dialogs
 {
     [Serializable]
-    [LuisActionBinding("Creating Snapshot", FriendlyName = "Creating Snapshot Service Request")]
-    public class CreatingSnapshotAction : BaseLuisAction
+    [LuisActionBinding("Creating Active Directory User", FriendlyName = "Creating Active Directory User Service Request")]
+    public class CreatingActiveDirectoryUserAction : BaseLuisAction
     {
-        [Required(ErrorMessage = "Please give me your VM name")]
-        [LuisActionBindingParam(CustomType ="VM_Name", Order = 1)]
-        public string VM_Name { get; set; }
+        [Required(ErrorMessage = "Give me your organization unit please")]
+        [LuisActionBindingParam(CustomType = "OrganizationUnit_Name", Order = 1)]
+        public string OrganizationUnit_Name { get; set; }
 
-        [Required(ErrorMessage = "With what name you want me to save this snap?")]
-        [LuisActionBindingParam(CustomType ="snapshot_Name", Order = 2)]
-        public string snapshot_Name { get; set; }
+        [Required(ErrorMessage = "May I know sam name for your account")]
+        [LuisActionBindingParam(CustomType = "samaccountname", Order = 2)]
+        public string samaccountname { get; set; }
 
+        [Required(ErrorMessage = "Enter username of your choice")]
+        [LuisActionBindingParam(CustomType = "User_Name", Order = 4)]
+        public string User_Name { get; set; }
+
+        [Required(ErrorMessage = "What name you would like on display?")]
+        [LuisActionBindingParam(CustomType = "Display_Name", Order = 3)]
+        public string Display_Name { get; set; }
+
+        [Required(ErrorMessage = "And what password would you like to set?")]
+        [LuisActionBindingParam(CustomType = "Password", Order = 5)]
+        public string Password { get; set; }
 
         public override Task<object> FulfillAsync()
         {
@@ -45,19 +58,36 @@ namespace Microsoft.Bot.Sample.LuisBot
             List<JsonParam> InnerJsonParam = new List<JsonParam>();
 
             JsonParam[] jparameter = new JsonParam[2];
-          
 
-            
+
+
             JsonParam jparameter1 = new JsonParam();
-            jparameter1.question = "VM_Name";
-            jparameter1.answer = this.VM_Name;
+            jparameter1.question = "OrganizationUnit_Name";
+            jparameter1.answer = this.OrganizationUnit_Name;
             InnerJsonParam.Add(jparameter1);
 
             JsonParam jparameter2 = new JsonParam();
-            jparameter2.question = "snapshotname";
-            jparameter2.answer = this.snapshot_Name;
+            jparameter2.question = "samaccountname";
+            jparameter2.answer = this.samaccountname;
             InnerJsonParam.Add(jparameter2);
-           
+
+            JsonParam jparameter3 = new JsonParam();
+            jparameter3.question = "User_Name";
+            jparameter3.answer = this.User_Name;
+            InnerJsonParam.Add(jparameter3);
+
+            JsonParam jparameter4 = new JsonParam();
+            jparameter4.question = "Display_Name";
+            jparameter4.answer = this.Display_Name;
+            InnerJsonParam.Add(jparameter4);
+
+            JsonParam jparameter5 = new JsonParam();
+            jparameter5.question = "Password";
+            jparameter5.answer = this.Password;
+            InnerJsonParam.Add(jparameter1);
+
+
+
 
             InnerJson innerjsonobject = new InnerJson();
             innerjsonobject.ServiceRequest = "Creating Snapshot";
@@ -111,7 +141,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             request1.RequestFormat = DataFormat.Json;
             IRestResponse response1 = client.Execute(request1);
 
-            return Task.FromResult((object)$"I will take a snapshot named {this.snapshot_Name} as soon as possible... Visit me again whenever you need my help. Have a great day :)");
+            return Task.FromResult((object)$"I will create AD account for {this.samaccountname} soon... Visit me again whenever you need my help... Have a great day :)");
         }
     }
 }

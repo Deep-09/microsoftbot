@@ -1,26 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Script.Serialization;
-using LuisBot.Dialogs;
+using Microsoft.Bot.Sample.LuisBot;
 using Microsoft.Cognitive.LUIS.ActionBinding;
 using Newtonsoft.Json;
 using RestSharp;
 
-namespace Microsoft.Bot.Sample.LuisBot
+namespace LuisBot.Dialogs
 {
     [Serializable]
-    [LuisActionBinding("Creating Snapshot", FriendlyName = "Creating Snapshot Service Request")]
-    public class CreatingSnapshotAction : BaseLuisAction
+    [LuisActionBinding("Unlock AD Account", FriendlyName = "Unlock AD Account Service Request")]
+    public class UnlockADAccountAction : BaseLuisAction
     {
-        [Required(ErrorMessage = "Please give me your VM name")]
-        [LuisActionBindingParam(CustomType ="VM_Name", Order = 1)]
-        public string VM_Name { get; set; }
-
-        [Required(ErrorMessage = "With what name you want me to save this snap?")]
-        [LuisActionBindingParam(CustomType ="snapshot_Name", Order = 2)]
-        public string snapshot_Name { get; set; }
+        [Required(ErrorMessage = "Please give me your sam account name")]
+        [LuisActionBindingParam(CustomType = "samaccountname", Order = 1)]
+        public string samaccountname { get; set; }
 
 
         public override Task<object> FulfillAsync()
@@ -45,19 +43,13 @@ namespace Microsoft.Bot.Sample.LuisBot
             List<JsonParam> InnerJsonParam = new List<JsonParam>();
 
             JsonParam[] jparameter = new JsonParam[2];
-          
 
-            
+
+
             JsonParam jparameter1 = new JsonParam();
-            jparameter1.question = "VM_Name";
-            jparameter1.answer = this.VM_Name;
+            jparameter1.question = "samaccountname";
+            jparameter1.answer = this.samaccountname;
             InnerJsonParam.Add(jparameter1);
-
-            JsonParam jparameter2 = new JsonParam();
-            jparameter2.question = "snapshotname";
-            jparameter2.answer = this.snapshot_Name;
-            InnerJsonParam.Add(jparameter2);
-           
 
             InnerJson innerjsonobject = new InnerJson();
             innerjsonobject.ServiceRequest = "Creating Snapshot";
@@ -111,7 +103,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             request1.RequestFormat = DataFormat.Json;
             IRestResponse response1 = client.Execute(request1);
 
-            return Task.FromResult((object)$"I will take a snapshot named {this.snapshot_Name} as soon as possible... Visit me again whenever you need my help. Have a great day :)");
+            return Task.FromResult((object)$"I will unlock account for  {this.samaccountname} as soon as possible... Visit me again whenever you need my help. Have a great day :)");
         }
     }
 }

@@ -1,26 +1,53 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Script.Serialization;
-using LuisBot.Dialogs;
+using Microsoft.Bot.Sample.LuisBot;
 using Microsoft.Cognitive.LUIS.ActionBinding;
 using Newtonsoft.Json;
 using RestSharp;
 
-namespace Microsoft.Bot.Sample.LuisBot
+namespace LuisBot.Dialogs
 {
     [Serializable]
-    [LuisActionBinding("Creating Snapshot", FriendlyName = "Creating Snapshot Service Request")]
-    public class CreatingSnapshotAction : BaseLuisAction
+    [LuisActionBinding("Create Virtual Machine​​", FriendlyName = "Create Virtual Machine​​ Service Request")]
+    public class CreateVirtualMachine​​Action : BaseLuisAction
     {
-        [Required(ErrorMessage = "Please give me your VM name")]
-        [LuisActionBindingParam(CustomType ="VM_Name", Order = 1)]
-        public string VM_Name { get; set; }
 
-        [Required(ErrorMessage = "With what name you want me to save this snap?")]
-        [LuisActionBindingParam(CustomType ="snapshot_Name", Order = 2)]
-        public string snapshot_Name { get; set; }
+        [Required(ErrorMessage = "Give me your vCenter IP please ")]
+        [LuisActionBindingParam(CustomType = "vcenter_IP", Order = 1)]
+        public string vcenter_IP { get; set; }
+
+        [Required(ErrorMessage = "May I know port number for the same")]
+        [LuisActionBindingParam(CustomType = "Port", Order = 2)]
+        public string Port { get; set; }
+
+        [Required(ErrorMessage = "Please enter your admin username below")]
+        [LuisActionBindingParam(CustomType = "Admin_Username", Order = 3)]
+        public string Admin_Username { get; set; }
+
+        [Required(ErrorMessage = "Can I have password for the same")]
+        [LuisActionBindingParam(CustomType = "Admin_Password", Order = 4)]
+        public string Admin_Password { get; set; }
+
+        [Required(ErrorMessage = "Give me VM Host IP please")]
+        [LuisActionBindingParam(CustomType = "VMHost_IP", Order = 5)]
+        public string VMHost_IP { get; set; }
+
+        [Required(ErrorMessage = "Datastore name please")]
+        [LuisActionBindingParam(CustomType = "Datastore", Order = 6)]
+        public string Datastore { get; set; }
+
+        [Required(ErrorMessage = "Give template a name of your choice")]
+        [LuisActionBindingParam(CustomType = "Template_Name", Order = 7)]
+        public string Template_Name { get; set; }
+
+        [Required(ErrorMessage = "And give this VM a name of your choice")]
+        [LuisActionBindingParam(CustomType = "VM_Name", Order = 8)]
+        public string VM_Name { get; set; }
 
 
         public override Task<object> FulfillAsync()
@@ -45,19 +72,49 @@ namespace Microsoft.Bot.Sample.LuisBot
             List<JsonParam> InnerJsonParam = new List<JsonParam>();
 
             JsonParam[] jparameter = new JsonParam[2];
-          
 
-            
+
+
             JsonParam jparameter1 = new JsonParam();
             jparameter1.question = "VM_Name";
             jparameter1.answer = this.VM_Name;
             InnerJsonParam.Add(jparameter1);
 
             JsonParam jparameter2 = new JsonParam();
-            jparameter2.question = "snapshotname";
-            jparameter2.answer = this.snapshot_Name;
+            jparameter2.question = "Port";
+            jparameter2.answer = this.Port;
             InnerJsonParam.Add(jparameter2);
-           
+
+
+            JsonParam jparameter3 = new JsonParam();
+            jparameter3.question = "Admin_Username";
+            jparameter3.answer = this.Admin_Username;
+            InnerJsonParam.Add(jparameter3);
+
+            JsonParam jparameter4 = new JsonParam();
+            jparameter4.question = "Admin_Password";
+            jparameter4.answer = this.Admin_Password;
+            InnerJsonParam.Add(jparameter4);
+
+            JsonParam jparameter5 = new JsonParam();
+            jparameter5.question = "VMHost_IP";
+            jparameter5.answer = this.VMHost_IP;
+            InnerJsonParam.Add(jparameter5);
+
+            JsonParam jparameter6 = new JsonParam();
+            jparameter6.question = "Datastore";
+            jparameter6.answer = this.Datastore;
+            InnerJsonParam.Add(jparameter6);
+
+            JsonParam jparameter7 = new JsonParam();
+            jparameter7.question = "Template_Name";
+            jparameter7.answer = this.Template_Name;
+            InnerJsonParam.Add(jparameter7);
+
+            JsonParam jparameter8 = new JsonParam();
+            jparameter8.question = "VM_Name";
+            jparameter8.answer = this.VM_Name;
+            InnerJsonParam.Add(jparameter8);
 
             InnerJson innerjsonobject = new InnerJson();
             innerjsonobject.ServiceRequest = "Creating Snapshot";
@@ -111,7 +168,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             request1.RequestFormat = DataFormat.Json;
             IRestResponse response1 = client.Execute(request1);
 
-            return Task.FromResult((object)$"I will take a snapshot named {this.snapshot_Name} as soon as possible... Visit me again whenever you need my help. Have a great day :)");
+            return Task.FromResult((object)$"I will add VM named {this.VM_Name} soon... Visit me again whenever you need my help... Have a great day :)");
         }
     }
 }
