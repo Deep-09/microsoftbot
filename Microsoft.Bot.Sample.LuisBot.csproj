@@ -187,6 +187,7 @@
     <Compile Include="Dialogs\BasicLuisDialog.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Dialogs\AutomationParameter.cs" />
+    <Compile Include="Dialogs\CreatingSnapshotAction.cs" />
     <Compile Include="Dialogs\HotelsQuery.cs" />
     <Compile Include="Dialogs\InnerJson.cs" />
     <Compile Include="Dialogs\JsonParam.cs" />
@@ -207,6 +208,12 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Microsoft.Cognitive.LUIS.ActionBinding\Microsoft.Cognitive.LUIS.ActionBinding.csproj">
+      <Project>{ABDF486D-CBF1-43A7-9044-CA46B5AB2A88}</Project>
+      <Name>Microsoft.Cognitive.LUIS.ActionBinding</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
