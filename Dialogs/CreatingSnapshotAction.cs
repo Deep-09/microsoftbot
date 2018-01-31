@@ -15,11 +15,11 @@ namespace Microsoft.Bot.Sample.LuisBot
     public class CreatingSnapshotAction : BaseLuisAction
     {
         [Required(ErrorMessage = "Please give me your VM name")]
-        [LuisActionBindingParam(CustomType ="vmname", Order = 1)]
+        [LuisActionBindingParam(CustomType ="VM_Name", Order = 1)]
         public DateTime? VM_Name { get; set; }
 
         [Required(ErrorMessage = "With what name you want me to save this snap?")]
-        [LuisActionBindingParam(CustomType ="snapname", Order = 2)]
+        [LuisActionBindingParam(CustomType ="snapshot_Name", Order = 2)]
         public DateTime? snapname { get; set; }
 
 
