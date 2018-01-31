@@ -16,11 +16,11 @@ namespace Microsoft.Bot.Sample.LuisBot
     {
         [Required(ErrorMessage = "Please give me your VM name")]
         [LuisActionBindingParam(CustomType ="VM_Name", Order = 1)]
-        public DateTime? VM_Name { get; set; }
+        public string VM_Name { get; set; }
 
         [Required(ErrorMessage = "With what name you want me to save this snap?")]
         [LuisActionBindingParam(CustomType ="snapshot_Name", Order = 2)]
-        public DateTime? snapname { get; set; }
+        public string snapname { get; set; }
 
 
         public override Task<object> FulfillAsync()
