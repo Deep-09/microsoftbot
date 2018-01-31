@@ -20,7 +20,7 @@ namespace Microsoft.Bot.Sample.LuisBot
 
         [Required(ErrorMessage = "With what name you want me to save this snap?")]
         [LuisActionBindingParam(CustomType ="snapshot_Name", Order = 2)]
-        public string snapname { get; set; }
+        public string snapshot_Name { get; set; }
 
 
         public override Task<object> FulfillAsync()
@@ -50,12 +50,12 @@ namespace Microsoft.Bot.Sample.LuisBot
             
             JsonParam jparameter1 = new JsonParam();
             jparameter1.question = "VM_Name";
-            jparameter1.answer = VM_Name;
+            jparameter1.answer = this.VM_Name;
             InnerJsonParam.Add(jparameter1);
 
             JsonParam jparameter2 = new JsonParam();
             jparameter2.question = "snapshotname";
-            jparameter2.answer = snapname;
+            jparameter2.answer = this.snapshot_Name;
             InnerJsonParam.Add(jparameter2);
            
 
@@ -111,7 +111,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             request1.RequestFormat = DataFormat.Json;
             IRestResponse response1 = client.Execute(request1);
 
-            return Task.FromResult((object)$"I will take a snapshot named {snapname} as soon as possible... Visit me again whenever you need my help. Have a great day :)");
+            return Task.FromResult((object)$"I will take a snapshot named {snapshot_Name} as soon as possible... Visit me again whenever you need my help. Have a great day :)");
         }
     }
 }
