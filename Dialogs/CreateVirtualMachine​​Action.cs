@@ -117,7 +117,7 @@ namespace LuisBot.Dialogs
             InnerJsonParam.Add(jparameter8);
 
             InnerJson innerjsonobject = new InnerJson();
-            innerjsonobject.ServiceRequest = "Creating Snapshot";
+            innerjsonobject.ServiceRequest = "Create Virtual Machine​​";
             innerjsonobject.@params = InnerJsonParam;
 
             string json1 = serialiser.Serialize(innerjsonobject);

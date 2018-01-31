@@ -90,7 +90,7 @@ namespace LuisBot.Dialogs
 
 
             InnerJson innerjsonobject = new InnerJson();
-            innerjsonobject.ServiceRequest = "Creating Snapshot";
+            innerjsonobject.ServiceRequest = "Creating Active Directory User";
             innerjsonobject.@params = InnerJsonParam;
 
             string json1 = serialiser.Serialize(innerjsonobject);
