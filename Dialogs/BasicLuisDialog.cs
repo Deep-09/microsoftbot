@@ -50,6 +50,45 @@ namespace Microsoft.Bot.Sample.LuisBot
             await context.PostAsync(message);
         }
 
+        [LuisIntent("Create Virtual Machine​​")]
+        public async Task IntentCreateVirtualMachine​​ActionResultHandlerAsync(IDialogContext context, object actionResult)
+        {
+
+            var message = context.MakeMessage();
+
+            message.Text = actionResult != null ? actionResult.ToString() : "Cannot resolve your query";
+
+            //await this.AECallAsync(context, actionResult);
+
+            await context.PostAsync(message);
+        }
+
+        [LuisIntent("Unlock AD Account")]
+        public async Task IntentUnlockADAccountActionResultHandlerAsync(IDialogContext context, object actionResult)
+        {
+
+            var message = context.MakeMessage();
+
+            message.Text = actionResult != null ? actionResult.ToString() : "Cannot resolve your query";
+
+            //await this.AECallAsync(context, actionResult);
+
+            await context.PostAsync(message);
+        }
+
+        [LuisIntent("Creating Active Directory User")]
+        public async Task IntentCreatingActiveDirectoryUserActionResultHandlerAsync(IDialogContext context, object actionResult)
+        {
+
+            var message = context.MakeMessage();
+
+            message.Text = actionResult != null ? actionResult.ToString() : "Cannot resolve your query";
+
+            //await this.AECallAsync(context, actionResult);
+
+            await context.PostAsync(message);
+        }
+
         /*
 
         private async Task AECallAsync(IDialogContext context, object actionResult)
