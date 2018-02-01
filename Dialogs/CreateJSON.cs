@@ -1,61 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Script.Serialization;
 using Microsoft.Bot.Sample.LuisBot;
-using Microsoft.Cognitive.LUIS.ActionBinding;
 using Newtonsoft.Json;
 using RestSharp;
 
-
 namespace LuisBot.Dialogs
 {
-    [Serializable]
-    [LuisActionBinding("Creating Active Directory User", FriendlyName = "Creating Active Directory User Service Request")]
-    public class CreatingActiveDirectoryUserAction : BaseLuisAction
+    public class CrteateJSON
     {
-        
-
-        [Required(ErrorMessage = "Give me your organization unit please")]
-        [LuisActionBindingParam(CustomType = "OrganizationUnit_Name", Order = 1)]
-        public string OrganizationUnit_Name { get; set; }
-
-        [Required(ErrorMessage = "May I know sam name for your account")]
-        [LuisActionBindingParam(CustomType = "samaccountname", Order = 2)]
-        public string samaccountname { get; set; }
-
-        [Required(ErrorMessage = "Enter username of your choice")]
-        [LuisActionBindingParam(CustomType = "User_Name", Order = 4)]
-        public string User_Name { get; set; }
-
-        [Required(ErrorMessage = "What name you would like on display?")]
-        [LuisActionBindingParam(CustomType = "Display_Name", Order = 3)]
-        public string Display_Name { get; set; }
-
-        [Required(ErrorMessage = "And what password would you like to set?")]
-        [LuisActionBindingParam(CustomType = "Password", Order = 5)]
-        public string Password { get; set; }
-
-        
-        
-
-        public override Task<object> FulfillAsync()
+        public void AECall(Dictionary<string, string> MyEntities,string intentsr)
         {
-            Dictionary<string, string> MyEntities = new Dictionary<string, string>();
-            MyEntities.Add("OrganizationUnit_Name", OrganizationUnit_Name);
-            MyEntities.Add("samaccountname", samaccountname);
-            MyEntities.Add("User_Name", User_Name);
-            MyEntities.Add("Display_Name", Display_Name);
-            MyEntities.Add("Password", Password);
-
-            CreateJSON createJSON = new CreateJSON();
-
-            createJSON.AECall(MyEntities, "Creating Active Directory User");
-            
-            /*
             var client = new RestClient("http://96a7bf35.ngrok.io/aeengine/rest/authenticate");
             var request = new RestRequest(Method.POST);
             request.AddHeader("postman-token", "ea502694-bf8a-9c2e-e27b-8082381ce137");
@@ -83,38 +41,9 @@ namespace LuisBot.Dialogs
                 jparameter[i].answer = MyEntities.ElementAt(i).Value;
                 InnerJsonParam.Add(jparameter[i]);
             }
-            /*
-            JsonParam jparameter1 = new JsonParam();
-            jparameter1.question = "OrganizationUnit_Name";
-            jparameter1.answer = this.OrganizationUnit_Name;
-            InnerJsonParam.Add(jparameter1);
-
-            JsonParam jparameter2 = new JsonParam();
-            jparameter2.question = "samaccountname";
-            jparameter2.answer = this.samaccountname;
-            InnerJsonParam.Add(jparameter2);
-
-            JsonParam jparameter3 = new JsonParam();
-            jparameter3.question = "User_Name";
-            jparameter3.answer = this.User_Name;
-            InnerJsonParam.Add(jparameter3);
-
-            JsonParam jparameter4 = new JsonParam();
-            jparameter4.question = "Display_Name";
-            jparameter4.answer = this.Display_Name;
-            InnerJsonParam.Add(jparameter4);
-
-            JsonParam jparameter5 = new JsonParam();
-            jparameter5.question = "Password";
-            jparameter5.answer = this.Password;
-            InnerJsonParam.Add(jparameter1);
             
-
-
-
-
             InnerJson innerjsonobject = new InnerJson();
-            innerjsonobject.ServiceRequest = "Creating Active Directory User";
+            innerjsonobject.ServiceRequest = intentsr;
             innerjsonobject.@params = InnerJsonParam;
 
             string json1 = serialiser.Serialize(innerjsonobject);
@@ -164,8 +93,6 @@ namespace LuisBot.Dialogs
             request1.AddParameter("application/json", json, ParameterType.RequestBody);
             request1.RequestFormat = DataFormat.Json;
             IRestResponse response1 = client.Execute(request1);
-            */
-            return Task.FromResult((object)$"I will create AD account for {this.samaccountname} soon... Visit me again whenever you need my help... Have a great day :)");
         }
     }
 }
