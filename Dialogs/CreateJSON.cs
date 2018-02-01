@@ -10,7 +10,7 @@ using RestSharp;
 
 namespace LuisBot.Dialogs
 {
-    public class CrteateJSON
+    public class CreateJSON
     {
         public void AECall(Dictionary<string, string> MyEntities,string intentsr)
         {
