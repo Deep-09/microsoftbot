@@ -191,7 +191,6 @@
     <Compile Include="Dialogs\CreatingActiveDirectoryUserAction.cs" />
     <Compile Include="Dialogs\CreatingSnapshotAction.cs" />
     <Compile Include="Dialogs\CreateJSON.cs" />
-    <Compile Include="Dialogs\HotelsQuery.cs" />
     <Compile Include="Dialogs\InnerJson.cs" />
     <Compile Include="Dialogs\JsonParam.cs" />
     <Compile Include="Dialogs\RootAutomation.cs" />

@@ -33,7 +33,7 @@ namespace LuisBot.Dialogs
 
             List<JsonParam> InnerJsonParam = new List<JsonParam>();
 
-            JsonParam[] jparameter = new JsonParam[2];
+            JsonParam[] jparameter = new JsonParam[MyEntities.Count];
             for (int i = 0; i < MyEntities.Count; i++)
             {
                 jparameter[i] = new JsonParam();
@@ -86,8 +86,6 @@ namespace LuisBot.Dialogs
             AutoRoot.responseMailSubject = null;
             string json = serialiser.Serialize(AutoRoot);
             //await context.PostAsync($"{json}");
-
-
 
             request1.AddHeader("content-type", "application/json");
             request1.AddParameter("application/json", json, ParameterType.RequestBody);
