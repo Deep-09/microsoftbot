@@ -33,8 +33,18 @@ namespace Microsoft.Bot.Sample.LuisBot
             domain: ConfigurationManager.AppSettings["LuisAPIHostName"])))
         {
         }
-        
-     
+
+
+        [LuisIntent("Greeting")]
+        public async Task IntentGreetingHandlerAsync(IDialogContext context, object actionResult)
+        {
+            var message = context.MakeMessage();
+
+            message.Text = actionResult != null ? actionResult.ToString() : "Cannot resolve your query";
+
+            await context.PostAsync(message);
+        }
+
         [LuisIntent("Creating Snapshot")]
         public async Task IntentActionResultHandlerAsync(IDialogContext context, object actionResult)
         {
