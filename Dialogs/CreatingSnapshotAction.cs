@@ -32,7 +32,7 @@ namespace Microsoft.Bot.Sample.LuisBot
  
             CreateJSON createJSON = new CreateJSON();
 
-            createJSON.AECall(MyEntities, "Creating Active Directory User");
+            createJSON.AECall(MyEntities, "Creating Snapshot");
 
             return Task.FromResult((object)$"I will take a snapshot named {this.snapshot_Name} as soon as possible... Visit me again whenever you need my help. Have a great day :)");
         }
