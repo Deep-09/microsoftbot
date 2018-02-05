@@ -196,6 +196,7 @@
     <Compile Include="Dialogs\GreetingAction.cs" />
     <Compile Include="Dialogs\InnerJson.cs" />
     <Compile Include="Dialogs\JsonParam.cs" />
+    <Compile Include="Dialogs\NoneIntentAction.cs" />
     <Compile Include="Dialogs\RootAutomation.cs" />
     <Compile Include="Dialogs\UnlockADAccountAction.cs" />
     <Compile Include="Global.asax.cs">
