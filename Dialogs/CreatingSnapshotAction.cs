@@ -14,11 +14,11 @@ namespace Microsoft.Bot.Sample.LuisBot
     [LuisActionBinding("Creating Snapshot", FriendlyName = "Creating Snapshot Service Request")]
     public class CreatingSnapshotAction : BaseLuisAction
     {
-        [Required(ErrorMessage = "Please give me your VM name")]
+        [Required(ErrorMessage = "Please provide VM name")]
         [LuisActionBindingParam(CustomType ="VM_Name", Order = 1)]
         public string VM_Name { get; set; }
 
-        [Required(ErrorMessage = "With what name you want me to save this snap?")]
+        [Required(ErrorMessage = "What name should I give to the saved snapshot?")]
         [LuisActionBindingParam(CustomType ="snapshot_Name", Order = 2)]
         public string snapshot_Name { get; set; }
 
