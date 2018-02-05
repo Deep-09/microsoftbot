@@ -10,10 +10,10 @@ using Microsoft.Cognitive.LUIS.ActionBinding;
 namespace LuisBot.Dialogs
 {
     [Serializable]
-    [LuisActionBinding("Change VM Name", FriendlyName = "Change VM Name")]
+    [LuisActionBinding("CreatingSnapshotAction-ChangeVMNameAction", FriendlyName = "Change VM Name")]
     public class ChangeVMNameAction : BaseLuisContextualAction<CreatingSnapshotAction>
     {
-        [Required(ErrorMessage = "Please provide a new VM Name")]
+        [Required(ErrorMessage = "Please provide the new VM Name")]
         [LuisActionBindingParam(CustomType = "VM_Name")]
         public string VM_Name { get; set; }
 
