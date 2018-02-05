@@ -8,7 +8,7 @@ using Microsoft.Cognitive.LUIS.ActionBinding;
 namespace LuisBot.Dialogs
 {
     [Serializable]
-    [LuisActionBinding("Create Virtual Machine​​", FriendlyName = "Create Virtual Machine​​ Service Request")]
+    [LuisActionBinding("None", FriendlyName = "Out of scope")]
     public class NoneIntentAction : BaseLuisAction
     {
         public override Task<object> FulfillAsync()
