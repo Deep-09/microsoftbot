@@ -23,7 +23,7 @@ namespace Microsoft.Bot.Sample.LuisBot
     {
        
         public BasicLuisDialog() : base(
-            new Assembly[] { typeof(CreatingSnapshotAction).Assembly },
+            new Assembly[] { typeof(GreetingAction).Assembly },
             (action, context) =>
             { 
             },
@@ -37,6 +37,14 @@ namespace Microsoft.Bot.Sample.LuisBot
 
         [LuisIntent("Greeting")]
         public async Task IntentGreetingHandlerAsync(IDialogContext context, object actionResult)
+        {
+            var message = context.MakeMessage();
+            message.Text = actionResult != null ? actionResult.ToString() : "Cannot resolve your query";
+            await context.PostAsync(message);
+        }
+
+        [LuisIntent("Create Virtual Machine​​")]
+        public async Task IntentCreateVirtualMachine​​ActionResultHandlerAsync(IDialogContext context, object actionResult)
         {
             var message = context.MakeMessage();
             message.Text = actionResult != null ? actionResult.ToString() : "Cannot resolve your query";
@@ -73,14 +81,6 @@ namespace Microsoft.Bot.Sample.LuisBot
 
         [LuisIntent("Creating Snapshot")]
         public async Task IntentActionResultHandlerAsync(IDialogContext context, object actionResult)
-        {
-            var message = context.MakeMessage();
-            message.Text = actionResult != null ? actionResult.ToString() : "Cannot resolve your query";
-            await context.PostAsync(message);
-        }
-
-        [LuisIntent("Create Virtual Machine​​")]
-        public async Task IntentCreateVirtualMachine​​ActionResultHandlerAsync(IDialogContext context, object actionResult)
         {
             var message = context.MakeMessage();
             message.Text = actionResult != null ? actionResult.ToString() : "Cannot resolve your query";
