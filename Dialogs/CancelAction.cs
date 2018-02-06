@@ -13,7 +13,7 @@ namespace LuisBot.Dialogs
     {
         public override Task<object> FulfillAsync()
         {
-            return Task.FromResult((object)$"I canceled your action");
+            return Task.FromResult((object)$"I cancelled your action");
         }
     }
 }
