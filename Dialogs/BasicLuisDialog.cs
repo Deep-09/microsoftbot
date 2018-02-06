@@ -43,7 +43,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             await context.PostAsync(message);
         }
 
-        [LuisIntent("Create Virtual Machine​​")]
+        [LuisIntent("Create Virtual Machine")]
         public async Task IntentCreateVirtualMachine​​ActionResultHandlerAsync(IDialogContext context, object actionResult)
         {
             var message = context.MakeMessage();
