@@ -52,11 +52,7 @@ namespace Microsoft.Bot.Sample.LuisBot
 
             message.Text = actionResult != null ? actionResult.ToString() : "Cannot resolve your query";
 
-            await context.PostAsync(message);
-            await context.PostAsync("add ad user");
-            await context.PostAsync("unlock ad for");
-            await context.PostAsync("take a snap");
-            await context.PostAsync("add vm");
+            await context.PostAsync($"{message} add ad user\n unlock ad for\n take a snap\n add vm");
         }
 
         [LuisIntent("Creating Snapshot")]
