@@ -51,7 +51,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             await context.PostAsync(message);
         }
 
-        /*
+        
         [LuisIntent("Cancel")]
         public async Task IntentCancelHandlerAsync(IDialogContext context, object actionResult)
         {
@@ -60,7 +60,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             await context.PostAsync(message);
             
         }
-        */
+        
         [LuisIntent("Help")]
         public async Task IntentHelpHandlerAsync(IDialogContext context, object actionResult)
         {
