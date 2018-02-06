@@ -4,19 +4,14 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
-using System.Web.Script.Serialization;
-using Microsoft.Bot.Sample.LuisBot;
 using Microsoft.Cognitive.LUIS.ActionBinding;
-using Newtonsoft.Json;
-using RestSharp;
 
 namespace LuisBot.Dialogs
 {
     [Serializable]
-    [LuisActionBinding("Create Virtual Machine​​", FriendlyName = "Create Virtual Machine​​ Service Request")]
-    public class CrearingVirtualMachineAction : BaseLuisAction
+    [LuisActionBinding("Create Virtual Machine", FriendlyName = "Create Virtual Machine Service Request")]
+    public class CreateVirtualMachine : BaseLuisAction
     {
-
         [Required(ErrorMessage = "Give me your vCenter IP please ")]
         [LuisActionBindingParam(CustomType = "vcenter_IP", Order = 1)]
         public string vcenter_IP { get; set; }
