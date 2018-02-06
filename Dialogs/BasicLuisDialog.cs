@@ -53,7 +53,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             message.Text = actionResult != null ? actionResult.ToString() : "Cannot resolve your query";
 
             await context.PostAsync(message);
-            await context.PostAsync("You may say something like this\n -Add ad user\n -Please unlock ad user\n -Take a snap\n -Add VM");
+            await context.PostAsync("You may say something like this\n Add ad user\n Please unlock ad user\n Take a snap\n Add VM");
         }
 
         [LuisIntent("None")]
@@ -64,7 +64,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             message.Text = actionResult != null ? actionResult.ToString() : "Cannot resolve your query";
 
             await context.PostAsync(message);
-            await context.PostAsync("\n -Add ad user\n -Please unlock ad user\n -Take a snap\n -Add VM");
+            await context.PostAsync("\nYou may say something like this\n Add ad user\n Please unlock ad user\n Take a snap\n Add VM");
         }
 
         [LuisIntent("Creating Snapshot")]

@@ -13,7 +13,7 @@ namespace LuisBot.Dialogs
     {
         public override Task<object> FulfillAsync()
         {
-            return Task.FromResult((object)$"I am unable to understand you... Please ask me about IT Services... ");
+            return Task.FromResult((object)$"Hello! I am your IT Service Desk Virtual Assistant *Maggi* :) . I can help you with IT service related issues and requests...");
         }
     }
 }
