@@ -45,6 +45,17 @@ namespace Microsoft.Bot.Sample.LuisBot
             await context.PostAsync(message);
         }
 
+        [LuisIntent("Help")]
+        public async Task IntentHelpHandlerAsync(IDialogContext context, object actionResult)
+        {
+            var message = context.MakeMessage();
+
+            message.Text = actionResult != null ? actionResult.ToString() : "Cannot resolve your query";
+
+            await context.PostAsync(message);
+            await context.PostAsync("You may say something like this\n -Add ad user\n -Please unlock ad user\n -Take a snap\n -Add VM");
+        }
+
         [LuisIntent("None")]
         public async Task IntentNoneHandlerAsync(IDialogContext context, object actionResult)
         {
@@ -52,7 +63,8 @@ namespace Microsoft.Bot.Sample.LuisBot
 
             message.Text = actionResult != null ? actionResult.ToString() : "Cannot resolve your query";
 
-            await context.PostAsync(message+"\n add ad user\n unlock ad for\n take a snap\n add vm");
+            await context.PostAsync(message);
+            await context.PostAsync("\n -Add ad user\n -Please unlock ad user\n -Take a snap\n -Add VM");
         }
 
         [LuisIntent("Creating Snapshot")]
