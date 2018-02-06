@@ -14,7 +14,7 @@ namespace LuisBot.Dialogs
 {
     [Serializable]
     [LuisActionBinding("Create Virtual Machine​​", FriendlyName = "Create Virtual Machine​​ Service Request")]
-    public class CreateVirtualMachine​​Action : BaseLuisAction
+    public class CrearingVirtualMachineAction : BaseLuisAction
     {
 
         [Required(ErrorMessage = "Give me your vCenter IP please ")]

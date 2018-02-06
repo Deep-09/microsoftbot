@@ -187,7 +187,7 @@
     <Compile Include="Dialogs\BasicLuisDialog.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Dialogs\AutomationParameter.cs" />
-    <Compile Include="Dialogs\CrearingVertualMachineAction.cs" />
+    <Compile Include="Dialogs\CrearingVirtualMachineAction.cs" />
     <Compile Include="Dialogs\CreatingSnapshotAction-ChangeVMNameAction.cs" />
     <Compile Include="Dialogs\CreateADAccount-ChangeUserName.cs" />
     <Compile Include="Dialogs\CreatingActiveDirectoryUserAction.cs" />
