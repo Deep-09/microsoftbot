@@ -194,7 +194,6 @@
     <Compile Include="Dialogs\CreatingActiveDirectoryUserAction.cs" />
     <Compile Include="Dialogs\CreatingSnapshotAction.cs" />
     <Compile Include="Dialogs\CreateJSON.cs" />
-    <Compile Include="Dialogs\GreetingAction.cs" />
     <Compile Include="Dialogs\HelpAction.cs" />
     <Compile Include="Dialogs\InnerJson.cs" />
     <Compile Include="Dialogs\JsonParam.cs" />
