@@ -12,7 +12,7 @@ namespace LuisBot.Dialogs
     [LuisActionBinding("CreateADAccount-ChangeUserName", FriendlyName = "Change Username")]
     public class CreateADAccount_ChangeUserName : BaseLuisContextualAction<CreatingActiveDirectoryUserAction>
     {
-        [Required(ErrorMessage = "Please provide a new  Username")]
+        [Required(ErrorMessage = "Please provide a new  username")]
         [LuisActionBindingParam(CustomType = "User_Name")]
         public string User_Name { get; set; }
 
