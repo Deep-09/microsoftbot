@@ -1,0 +1,1525 @@
+{
+  "luis_schema_version": "2.1.0",
+  "versionId": "0.1",
+  "name": "ITSDChatbot-ae0d",
+  "desc": "Default Intents for Azure Bot Service V2",
+  "culture": "en-us",
+  "intents": [
+    {
+      "name": "Cancel"
+    },
+    {
+      "name": "Create Virtual Machine"
+    },
+    {
+      "name": "CreateADAccount-ChangeUserName"
+    },
+    {
+      "name": "Creating Active Directory User"
+    },
+    {
+      "name": "Creating Snapshot"
+    },
+    {
+      "name": "CreatingSnapshotAction-ChangeVMNameAction"
+    },
+    {
+      "name": "Greeting"
+    },
+    {
+      "name": "Help"
+    },
+    {
+      "name": "Inputs"
+    },
+    {
+      "name": "None"
+    },
+    {
+      "name": "Unlock AD Account"
+    }
+  ],
+  "entities": [
+    {
+      "name": "Admin_Password"
+    },
+    {
+      "name": "Admin_Username"
+    },
+    {
+      "name": "create"
+    },
+    {
+      "name": "Datastore"
+    },
+    {
+      "name": "Display_Name"
+    },
+    {
+      "name": "OrganizationUnit_Name"
+    },
+    {
+      "name": "Password"
+    },
+    {
+      "name": "Port"
+    },
+    {
+      "name": "samaccountname"
+    },
+    {
+      "name": "snapshot_Name"
+    },
+    {
+      "name": "Template_Name"
+    },
+    {
+      "name": "User_Name"
+    },
+    {
+      "name": "vcenter"
+    },
+    {
+      "name": "vcenter_IP"
+    },
+    {
+      "name": "VM_Name"
+    },
+    {
+      "name": "VMHost_IP"
+    }
+  ],
+  "composites": [],
+  "closedLists": [],
+  "bing_entities": [],
+  "model_features": [
+    {
+      "name": "names",
+      "mode": true,
+      "words": "deepak,sunil,sanjay,ashish,rajesh,amit,chopra,rahul,sandeep,ajay,satish,manoj,vishal,rohit,anil,vijay,kumar,ravi,sharma,vinay,nitin,vivek,suresh,gaurav,rakesh,vikram,arun,ramesh,vinod,dinesh,srikanth,karthik,raj,mahesh,anand,pradeep,kiran,krishna,abhishek,john,mohan,prakash,arjun,paul,priya,naresh,mark,david,james,michael,alex,andrew,daniel,peter,sarah,robert,chris,mike,steve,thomas,brian,ryan,adam,richard,george,scott,kevin,jason,patrick,jack,sam,kyle,greg,keith,tony,williams,jones,aaron,jon,harris,kelly,satya,[ a - z ] +",
+      "activated": true
+    }
+  ],
+  "regex_features": [],
+  "utterances": [
+    {
+      "text": "hello",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "stop",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "take a snapshot",
+      "intent": "Creating Snapshot",
+      "entities": []
+    },
+    {
+      "text": "hi",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "cancel",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "please help me",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "how are you",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "help",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "good morning",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "what can i say",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "what is your name",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "good afternoon",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "how are you?",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "how are you today?",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "good evening",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "hey",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "yes",
+      "intent": "Inputs",
+      "entities": []
+    },
+    {
+      "text": "help me",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "i am stuck",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "create account",
+      "intent": "Creating Active Directory User",
+      "entities": []
+    },
+    {
+      "text": "please stop",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "add account",
+      "intent": "Creating Active Directory User",
+      "entities": []
+    },
+    {
+      "text": "help me please",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "how are you doing?",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "what do i do?",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "hello bot",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "good night",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "don't",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "abort",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "keep in touch",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "never mind",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "what can you do",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": ":)",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "how are you doing today?",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "hiya",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "don't do it",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "please cancel",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "what do i do now?",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "help please",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "status",
+      "intent": "Inputs",
+      "entities": []
+    },
+    {
+      "text": "hi bot",
+      "intent": "Greeting",
+      "entities": []
+    },
+    {
+      "text": "dfg",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "sss",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "create vm",
+      "intent": "Create Virtual Machine",
+      "entities": []
+    },
+    {
+      "text": "what can you help me with",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "don't do that",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "i'm stuck",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "deepak",
+      "intent": "Inputs",
+      "entities": [
+        {
+          "entity": "samaccountname",
+          "startPos": 0,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "add user",
+      "intent": "Creating Active Directory User",
+      "entities": []
+    },
+    {
+      "text": "add new user",
+      "intent": "Creating Active Directory User",
+      "entities": []
+    },
+    {
+      "text": "change username",
+      "intent": "CreateADAccount-ChangeUserName",
+      "entities": []
+    },
+    {
+      "text": "disregard",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "unlock account",
+      "intent": "Unlock AD Account",
+      "entities": []
+    },
+    {
+      "text": "linux",
+      "intent": "Inputs",
+      "entities": []
+    },
+    {
+      "text": "do not do that",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "do not do it",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "automation",
+      "intent": "Inputs",
+      "entities": []
+    },
+    {
+      "text": "ubuntu",
+      "intent": "Inputs",
+      "entities": []
+    },
+    {
+      "text": "take a snap",
+      "intent": "Creating Snapshot",
+      "entities": []
+    },
+    {
+      "text": "manish",
+      "intent": "Inputs",
+      "entities": []
+    },
+    {
+      "text": "install python",
+      "intent": "Inputs",
+      "entities": []
+    },
+    {
+      "text": "redhat",
+      "intent": "Inputs",
+      "entities": []
+    },
+    {
+      "text": "i would like to cancel",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "please disregard",
+      "intent": "Cancel",
+      "entities": []
+    },
+    {
+      "text": "my water bottle is green.",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "there is a large deep dish pizza in your future.",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "why doesn't this work ?",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "unlock user account",
+      "intent": "Unlock AD Account",
+      "entities": []
+    },
+    {
+      "text": "unlock user",
+      "intent": "Unlock AD Account",
+      "entities": []
+    },
+    {
+      "text": "unlock abc",
+      "intent": "Unlock AD Account",
+      "entities": [
+        {
+          "entity": "samaccountname",
+          "startPos": 7,
+          "endPos": 9
+        }
+      ]
+    },
+    {
+      "text": "need to change user name",
+      "intent": "CreateADAccount-ChangeUserName",
+      "entities": []
+    },
+    {
+      "text": "create user account",
+      "intent": "Creating Active Directory User",
+      "entities": []
+    },
+    {
+      "text": "please create virtual machine",
+      "intent": "Create Virtual Machine",
+      "entities": []
+    },
+    {
+      "text": "please create new ad user",
+      "intent": "Creating Active Directory User",
+      "entities": []
+    },
+    {
+      "text": "add ad user",
+      "intent": "Creating Active Directory User",
+      "entities": []
+    },
+    {
+      "text": "provide me with new ad user account",
+      "intent": "Creating Active Directory User",
+      "entities": []
+    },
+    {
+      "text": "i want to create ad user account",
+      "intent": "Creating Active Directory User",
+      "entities": []
+    },
+    {
+      "text": "ad account is locked for deepak",
+      "intent": "Unlock AD Account",
+      "entities": [
+        {
+          "entity": "samaccountname",
+          "startPos": 25,
+          "endPos": 30
+        }
+      ]
+    },
+    {
+      "text": "please unlock ad account for pooja",
+      "intent": "Unlock AD Account",
+      "entities": [
+        {
+          "entity": "samaccountname",
+          "startPos": 29,
+          "endPos": 33
+        }
+      ]
+    },
+    {
+      "text": "please unlock ad with samaccount deepak",
+      "intent": "Unlock AD Account",
+      "entities": [
+        {
+          "entity": "samaccountname",
+          "startPos": 33,
+          "endPos": 38
+        }
+      ]
+    },
+    {
+      "text": "unlock deepak",
+      "intent": "Unlock AD Account",
+      "entities": [
+        {
+          "entity": "samaccountname",
+          "startPos": 7,
+          "endPos": 12
+        }
+      ]
+    },
+    {
+      "text": "unlock anjali",
+      "intent": "Unlock AD Account",
+      "entities": [
+        {
+          "entity": "samaccountname",
+          "startPos": 7,
+          "endPos": 12
+        }
+      ]
+    },
+    {
+      "text": "add vm",
+      "intent": "Create Virtual Machine",
+      "entities": []
+    },
+    {
+      "text": "unlock ad account for anjali",
+      "intent": "Unlock AD Account",
+      "entities": [
+        {
+          "entity": "samaccountname",
+          "startPos": 22,
+          "endPos": 27
+        }
+      ]
+    },
+    {
+      "text": "unlock sam account mahesh",
+      "intent": "Unlock AD Account",
+      "entities": [
+        {
+          "entity": "samaccountname",
+          "startPos": 19,
+          "endPos": 24
+        }
+      ]
+    },
+    {
+      "text": "unlock manish",
+      "intent": "Unlock AD Account",
+      "entities": [
+        {
+          "entity": "samaccountname",
+          "startPos": 7,
+          "endPos": 12
+        }
+      ]
+    },
+    {
+      "text": "unlock account for satya",
+      "intent": "Unlock AD Account",
+      "entities": [
+        {
+          "entity": "samaccountname",
+          "startPos": 19,
+          "endPos": 23
+        }
+      ]
+    },
+    {
+      "text": "unlock ad for virat",
+      "intent": "Unlock AD Account",
+      "entities": [
+        {
+          "entity": "samaccountname",
+          "startPos": 14,
+          "endPos": 18
+        }
+      ]
+    },
+    {
+      "text": "please unlock ad with samaccount ramesh",
+      "intent": "Unlock AD Account",
+      "entities": [
+        {
+          "entity": "samaccountname",
+          "startPos": 33,
+          "endPos": 38
+        }
+      ]
+    },
+    {
+      "text": "please unlock ad account for divya",
+      "intent": "Unlock AD Account",
+      "entities": [
+        {
+          "entity": "samaccountname",
+          "startPos": 29,
+          "endPos": 33
+        }
+      ]
+    },
+    {
+      "text": "unlock user geet",
+      "intent": "Unlock AD Account",
+      "entities": [
+        {
+          "entity": "samaccountname",
+          "startPos": 12,
+          "endPos": 15
+        }
+      ]
+    },
+    {
+      "text": "install jdk on my machine",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "please unlock user geetanjali",
+      "intent": "Unlock AD Account",
+      "entities": [
+        {
+          "entity": "samaccountname",
+          "startPos": 19,
+          "endPos": 28
+        }
+      ]
+    },
+    {
+      "text": "please unlock user ganesh",
+      "intent": "Unlock AD Account",
+      "entities": [
+        {
+          "entity": "samaccountname",
+          "startPos": 19,
+          "endPos": 24
+        }
+      ]
+    },
+    {
+      "text": "can you please unlock prashant",
+      "intent": "Unlock AD Account",
+      "entities": [
+        {
+          "entity": "samaccountname",
+          "startPos": 22,
+          "endPos": 29
+        }
+      ]
+    },
+    {
+      "text": "unlock ad for jignesh",
+      "intent": "Unlock AD Account",
+      "entities": [
+        {
+          "entity": "samaccountname",
+          "startPos": 14,
+          "endPos": 20
+        }
+      ]
+    },
+    {
+      "text": "unlock geeta",
+      "intent": "Unlock AD Account",
+      "entities": [
+        {
+          "entity": "samaccountname",
+          "startPos": 7,
+          "endPos": 11
+        }
+      ]
+    },
+    {
+      "text": "unlock pradnya",
+      "intent": "Unlock AD Account",
+      "entities": [
+        {
+          "entity": "samaccountname",
+          "startPos": 7,
+          "endPos": 13
+        }
+      ]
+    },
+    {
+      "text": "create ad account",
+      "intent": "Creating Active Directory User",
+      "entities": []
+    },
+    {
+      "text": "create new ad account",
+      "intent": "Creating Active Directory User",
+      "entities": []
+    },
+    {
+      "text": "create ad account for geet",
+      "intent": "Creating Active Directory User",
+      "entities": [
+        {
+          "entity": "User_Name",
+          "startPos": 22,
+          "endPos": 25
+        }
+      ]
+    },
+    {
+      "text": "create ad account for geet with display name geet, username as geet and password is 1234 for automation organization",
+      "intent": "Creating Active Directory User",
+      "entities": [
+        {
+          "entity": "samaccountname",
+          "startPos": 22,
+          "endPos": 25
+        },
+        {
+          "entity": "Display_Name",
+          "startPos": 45,
+          "endPos": 48
+        },
+        {
+          "entity": "Password",
+          "startPos": 84,
+          "endPos": 87
+        },
+        {
+          "entity": "OrganizationUnit_Name",
+          "startPos": 93,
+          "endPos": 102
+        },
+        {
+          "entity": "User_Name",
+          "startPos": 63,
+          "endPos": 66
+        }
+      ]
+    },
+    {
+      "text": "create ad account for manish with display name manish, username as manish and password is 1234 for datascience organization",
+      "intent": "Creating Active Directory User",
+      "entities": [
+        {
+          "entity": "samaccountname",
+          "startPos": 22,
+          "endPos": 27
+        },
+        {
+          "entity": "Display_Name",
+          "startPos": 47,
+          "endPos": 52
+        },
+        {
+          "entity": "Password",
+          "startPos": 90,
+          "endPos": 93
+        },
+        {
+          "entity": "OrganizationUnit_Name",
+          "startPos": 99,
+          "endPos": 109
+        },
+        {
+          "entity": "User_Name",
+          "startPos": 67,
+          "endPos": 72
+        }
+      ]
+    },
+    {
+      "text": "can you please install ubuntu vm",
+      "intent": "Create Virtual Machine",
+      "entities": [
+        {
+          "entity": "VM_Name",
+          "startPos": 23,
+          "endPos": 28
+        }
+      ]
+    },
+    {
+      "text": "create ubuntu vm",
+      "intent": "Create Virtual Machine",
+      "entities": [
+        {
+          "entity": "VM_Name",
+          "startPos": 7,
+          "endPos": 12
+        }
+      ]
+    },
+    {
+      "text": "add linux vm",
+      "intent": "Create Virtual Machine",
+      "entities": [
+        {
+          "entity": "VM_Name",
+          "startPos": 4,
+          "endPos": 8
+        }
+      ]
+    },
+    {
+      "text": "please install ubuntu vm",
+      "intent": "Create Virtual Machine",
+      "entities": [
+        {
+          "entity": "VM_Name",
+          "startPos": 15,
+          "endPos": 20
+        }
+      ]
+    },
+    {
+      "text": "please add vm",
+      "intent": "Create Virtual Machine",
+      "entities": []
+    },
+    {
+      "text": "please change vm name",
+      "intent": "CreatingSnapshotAction-ChangeVMNameAction",
+      "entities": []
+    },
+    {
+      "text": "i want to change vm name to linux",
+      "intent": "CreatingSnapshotAction-ChangeVMNameAction",
+      "entities": [
+        {
+          "entity": "VM_Name",
+          "startPos": 28,
+          "endPos": 32
+        }
+      ]
+    },
+    {
+      "text": "i want to change user name to manish",
+      "intent": "CreateADAccount-ChangeUserName",
+      "entities": [
+        {
+          "entity": "User_Name",
+          "startPos": 30,
+          "endPos": 35
+        }
+      ]
+    },
+    {
+      "text": "please change user name",
+      "intent": "CreateADAccount-ChangeUserName",
+      "entities": []
+    },
+    {
+      "text": "need to change user name as gajanan",
+      "intent": "CreateADAccount-ChangeUserName",
+      "entities": [
+        {
+          "entity": "User_Name",
+          "startPos": 28,
+          "endPos": 34
+        }
+      ]
+    },
+    {
+      "text": "take a snap of my vm linux as snap1",
+      "intent": "Creating Snapshot",
+      "entities": [
+        {
+          "entity": "VM_Name",
+          "startPos": 21,
+          "endPos": 25
+        },
+        {
+          "entity": "snapshot_Name",
+          "startPos": 30,
+          "endPos": 34
+        }
+      ]
+    },
+    {
+      "text": "create backup of ubuntu as ubuntubackup",
+      "intent": "Creating Snapshot",
+      "entities": [
+        {
+          "entity": "VM_Name",
+          "startPos": 17,
+          "endPos": 22
+        },
+        {
+          "entity": "snapshot_Name",
+          "startPos": 27,
+          "endPos": 38
+        }
+      ]
+    },
+    {
+      "text": "create snap as snap2 of my windows virtual machine",
+      "intent": "Creating Snapshot",
+      "entities": [
+        {
+          "entity": "VM_Name",
+          "startPos": 27,
+          "endPos": 33
+        },
+        {
+          "entity": "snapshot_Name",
+          "startPos": 15,
+          "endPos": 19
+        }
+      ]
+    },
+    {
+      "text": "take a snap as sn1 of my virtual machine redhat",
+      "intent": "Creating Snapshot",
+      "entities": [
+        {
+          "entity": "VM_Name",
+          "startPos": 41,
+          "endPos": 46
+        },
+        {
+          "entity": "snapshot_Name",
+          "startPos": 15,
+          "endPos": 17
+        }
+      ]
+    },
+    {
+      "text": "account is locked for nitin",
+      "intent": "Unlock AD Account",
+      "entities": [
+        {
+          "entity": "samaccountname",
+          "startPos": 22,
+          "endPos": 26
+        }
+      ]
+    },
+    {
+      "text": "unlock ad for deepak1",
+      "intent": "Unlock AD Account",
+      "entities": [
+        {
+          "entity": "samaccountname",
+          "startPos": 14,
+          "endPos": 20
+        }
+      ]
+    },
+    {
+      "text": "account is locked for anjali",
+      "intent": "Unlock AD Account",
+      "entities": [
+        {
+          "entity": "samaccountname",
+          "startPos": 22,
+          "endPos": 27
+        }
+      ]
+    },
+    {
+      "text": "account is locked for deepak",
+      "intent": "Unlock AD Account",
+      "entities": [
+        {
+          "entity": "samaccountname",
+          "startPos": 22,
+          "endPos": 27
+        }
+      ]
+    },
+    {
+      "text": "please unlock ad with samaccount monika",
+      "intent": "Unlock AD Account",
+      "entities": [
+        {
+          "entity": "samaccountname",
+          "startPos": 33,
+          "endPos": 38
+        }
+      ]
+    },
+    {
+      "text": "need change user name",
+      "intent": "CreateADAccount-ChangeUserName",
+      "entities": []
+    },
+    {
+      "text": "change user name to gajanan",
+      "intent": "CreateADAccount-ChangeUserName",
+      "entities": [
+        {
+          "entity": "User_Name",
+          "startPos": 20,
+          "endPos": 26
+        }
+      ]
+    },
+    {
+      "text": "change vm name to redhat",
+      "intent": "CreatingSnapshotAction-ChangeVMNameAction",
+      "entities": [
+        {
+          "entity": "VM_Name",
+          "startPos": 18,
+          "endPos": 23
+        }
+      ]
+    },
+    {
+      "text": "need to change vm name to linux",
+      "intent": "CreatingSnapshotAction-ChangeVMNameAction",
+      "entities": [
+        {
+          "entity": "VM_Name",
+          "startPos": 26,
+          "endPos": 30
+        }
+      ]
+    },
+    {
+      "text": "take a snap as snap3 of linux",
+      "intent": "Creating Snapshot",
+      "entities": [
+        {
+          "entity": "VM_Name",
+          "startPos": 24,
+          "endPos": 28
+        },
+        {
+          "entity": "snapshot_Name",
+          "startPos": 15,
+          "endPos": 19
+        }
+      ]
+    },
+    {
+      "text": "please create virtual machine ubuntu",
+      "intent": "Create Virtual Machine",
+      "entities": [
+        {
+          "entity": "VM_Name",
+          "startPos": 30,
+          "endPos": 35
+        }
+      ]
+    },
+    {
+      "text": "i want to change vm name to oracle",
+      "intent": "CreatingSnapshotAction-ChangeVMNameAction",
+      "entities": [
+        {
+          "entity": "VM_Name",
+          "startPos": 28,
+          "endPos": 33
+        }
+      ]
+    },
+    {
+      "text": "please change my vm name to linux",
+      "intent": "CreatingSnapshotAction-ChangeVMNameAction",
+      "entities": [
+        {
+          "entity": "VM_Name",
+          "startPos": 28,
+          "endPos": 32
+        }
+      ]
+    },
+    {
+      "text": "change vm name to ubantu",
+      "intent": "CreatingSnapshotAction-ChangeVMNameAction",
+      "entities": [
+        {
+          "entity": "VM_Name",
+          "startPos": 18,
+          "endPos": 23
+        }
+      ]
+    },
+    {
+      "text": "i would like to change my vm name to linux",
+      "intent": "CreatingSnapshotAction-ChangeVMNameAction",
+      "entities": [
+        {
+          "entity": "VM_Name",
+          "startPos": 37,
+          "endPos": 41
+        }
+      ]
+    },
+    {
+      "text": "i wann to change vm name to ubantu",
+      "intent": "CreatingSnapshotAction-ChangeVMNameAction",
+      "entities": [
+        {
+          "entity": "VM_Name",
+          "startPos": 28,
+          "endPos": 33
+        }
+      ]
+    },
+    {
+      "text": "please modify vm name to redhat",
+      "intent": "CreatingSnapshotAction-ChangeVMNameAction",
+      "entities": [
+        {
+          "entity": "VM_Name",
+          "startPos": 25,
+          "endPos": 30
+        }
+      ]
+    },
+    {
+      "text": "take snap of my vm linux as linuxbackup",
+      "intent": "Creating Snapshot",
+      "entities": [
+        {
+          "entity": "VM_Name",
+          "startPos": 19,
+          "endPos": 23
+        },
+        {
+          "entity": "snapshot_Name",
+          "startPos": 28,
+          "endPos": 38
+        }
+      ]
+    },
+    {
+      "text": "please take snap of redhat vm as backup",
+      "intent": "Creating Snapshot",
+      "entities": [
+        {
+          "entity": "VM_Name",
+          "startPos": 20,
+          "endPos": 25
+        },
+        {
+          "entity": "snapshot_Name",
+          "startPos": 33,
+          "endPos": 38
+        }
+      ]
+    },
+    {
+      "text": "i want to take backup of ubantu vm as snap8",
+      "intent": "Creating Snapshot",
+      "entities": [
+        {
+          "entity": "VM_Name",
+          "startPos": 25,
+          "endPos": 30
+        },
+        {
+          "entity": "snapshot_Name",
+          "startPos": 38,
+          "endPos": 42
+        }
+      ]
+    },
+    {
+      "text": "please take snap of vm redhat as rbackup",
+      "intent": "Creating Snapshot",
+      "entities": [
+        {
+          "entity": "VM_Name",
+          "startPos": 23,
+          "endPos": 28
+        },
+        {
+          "entity": "snapshot_Name",
+          "startPos": 33,
+          "endPos": 39
+        }
+      ]
+    },
+    {
+      "text": "please change user name as pradnya",
+      "intent": "CreateADAccount-ChangeUserName",
+      "entities": [
+        {
+          "entity": "User_Name",
+          "startPos": 27,
+          "endPos": 33
+        }
+      ]
+    },
+    {
+      "text": "i wann to change user name as pooja.pattanshetti",
+      "intent": "CreateADAccount-ChangeUserName",
+      "entities": [
+        {
+          "entity": "User_Name",
+          "startPos": 36,
+          "endPos": 47
+        }
+      ]
+    },
+    {
+      "text": "create ubuntu virtual machine",
+      "intent": "Create Virtual Machine",
+      "entities": [
+        {
+          "entity": "VM_Name",
+          "startPos": 7,
+          "endPos": 12
+        }
+      ]
+    },
+    {
+      "text": "add ubuntu virtual machine",
+      "intent": "Create Virtual Machine",
+      "entities": [
+        {
+          "entity": "VM_Name",
+          "startPos": 4,
+          "endPos": 9
+        }
+      ]
+    },
+    {
+      "text": "create vm redhat",
+      "intent": "Create Virtual Machine",
+      "entities": [
+        {
+          "entity": "VM_Name",
+          "startPos": 10,
+          "endPos": 15
+        }
+      ]
+    },
+    {
+      "text": "add vm redhat",
+      "intent": "Create Virtual Machine",
+      "entities": [
+        {
+          "entity": "VM_Name",
+          "startPos": 7,
+          "endPos": 12
+        }
+      ]
+    },
+    {
+      "text": "take backup of ubantu server as snap3",
+      "intent": "Creating Snapshot",
+      "entities": [
+        {
+          "entity": "VM_Name",
+          "startPos": 15,
+          "endPos": 20
+        },
+        {
+          "entity": "snapshot_Name",
+          "startPos": 32,
+          "endPos": 36
+        }
+      ]
+    },
+    {
+      "text": "create a snapshot of my vm",
+      "intent": "Creating Snapshot",
+      "entities": []
+    },
+    {
+      "text": "change vm name",
+      "intent": "CreatingSnapshotAction-ChangeVMNameAction",
+      "entities": []
+    },
+    {
+      "text": "please unlock ad user suresh",
+      "intent": "Unlock AD Account",
+      "entities": [
+        {
+          "entity": "samaccountname",
+          "startPos": 22,
+          "endPos": 27
+        }
+      ]
+    },
+    {
+      "text": "snap1",
+      "intent": "Inputs",
+      "entities": []
+    },
+    {
+      "text": "server_template",
+      "intent": "Inputs",
+      "entities": []
+    },
+    {
+      "text": "geet",
+      "intent": "Inputs",
+      "entities": []
+    },
+    {
+      "text": "i want backup",
+      "intent": "Creating Snapshot",
+      "entities": []
+    },
+    {
+      "text": "cook for me",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "change vmname",
+      "intent": "CreatingSnapshotAction-ChangeVMNameAction",
+      "entities": []
+    },
+    {
+      "text": "vmname need to be changed",
+      "intent": "CreatingSnapshotAction-ChangeVMNameAction",
+      "entities": []
+    },
+    {
+      "text": "water bottle is geen",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "creatre ad user as deepak",
+      "intent": "Creating Active Directory User",
+      "entities": [
+        {
+          "entity": "samaccountname",
+          "startPos": 19,
+          "endPos": 24
+        }
+      ]
+    },
+    {
+      "text": "unlock password for deepak",
+      "intent": "Unlock AD Account",
+      "entities": [
+        {
+          "entity": "samaccountname",
+          "startPos": 20,
+          "endPos": 25
+        }
+      ]
+    },
+    {
+      "text": "please unlock ad with samaccount manish",
+      "intent": "Unlock AD Account",
+      "entities": [
+        {
+          "entity": "samaccountname",
+          "startPos": 33,
+          "endPos": 38
+        }
+      ]
+    },
+    {
+      "text": "create ad user as geet",
+      "intent": "Creating Active Directory User",
+      "entities": [
+        {
+          "entity": "samaccountname",
+          "startPos": 18,
+          "endPos": 21
+        }
+      ]
+    },
+    {
+      "text": "unlock ad user",
+      "intent": "Unlock AD Account",
+      "entities": []
+    },
+    {
+      "text": "water bottle is green",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "create ad user",
+      "intent": "Creating Active Directory User",
+      "entities": []
+    },
+    {
+      "text": "unlock user apurwaa",
+      "intent": "Unlock AD Account",
+      "entities": [
+        {
+          "entity": "samaccountname",
+          "startPos": 12,
+          "endPos": 18
+        }
+      ]
+    },
+    {
+      "text": "take a snap of linux",
+      "intent": "Creating Snapshot",
+      "entities": [
+        {
+          "entity": "VM_Name",
+          "startPos": 15,
+          "endPos": 19
+        }
+      ]
+    },
+    {
+      "text": "unlock ad user deepak",
+      "intent": "Unlock AD Account",
+      "entities": [
+        {
+          "entity": "samaccountname",
+          "startPos": 15,
+          "endPos": 20
+        }
+      ]
+    },
+    {
+      "text": "use account locked",
+      "intent": "Unlock AD Account",
+      "entities": []
+    },
+    {
+      "text": "geeta",
+      "intent": "Inputs",
+      "entities": []
+    },
+    {
+      "text": "snap2",
+      "intent": "Inputs",
+      "entities": []
+    },
+    {
+      "text": "create a snap",
+      "intent": "Creating Snapshot",
+      "entities": []
+    },
+    {
+      "text": "unlock ad for pooja",
+      "intent": "Unlock AD Account",
+      "entities": [
+        {
+          "entity": "samaccountname",
+          "startPos": 14,
+          "endPos": 18
+        }
+      ]
+    },
+    {
+      "text": "unlock account satya",
+      "intent": "Unlock AD Account",
+      "entities": [
+        {
+          "entity": "samaccountname",
+          "startPos": 15,
+          "endPos": 19
+        }
+      ]
+    },
+    {
+      "text": "please unlock ad user",
+      "intent": "Unlock AD Account",
+      "entities": []
+    },
+    {
+      "text": "unlock account for",
+      "intent": "Unlock AD Account",
+      "entities": []
+    },
+    {
+      "text": "windowsserver",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "unlock geet",
+      "intent": "Unlock AD Account",
+      "entities": [
+        {
+          "entity": "samaccountname",
+          "startPos": 7,
+          "endPos": 10
+        }
+      ]
+    },
+    {
+      "text": "unlock ad user pradnya",
+      "intent": "Unlock AD Account",
+      "entities": [
+        {
+          "entity": "samaccountname",
+          "startPos": 15,
+          "endPos": 21
+        }
+      ]
+    }
+  ]
+}
