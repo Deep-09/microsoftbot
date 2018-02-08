@@ -4,14 +4,7 @@ using System.Threading.Tasks;
 using RestSharp;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Luis;
-using Microsoft.Bot.Builder.Luis.Models;
-using Newtonsoft.Json;
-using System.Web.Script.Serialization;
 using LuisBot.Dialogs;
-using System.Collections.Generic;
-using Microsoft.Bot.Connector;
-using Microsoft.Bot.Builder.FormFlow;
-using System.Linq;
 using Microsoft.Cognitive.LUIS.ActionBinding.Bot;
 using System.Reflection;
 

@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
-using System.Web.Script.Serialization;
-using Microsoft.Bot.Sample.LuisBot;
 using Microsoft.Cognitive.LUIS.ActionBinding;
 using Newtonsoft.Json;
-using RestSharp;
+
 
 
 namespace LuisBot.Dialogs
