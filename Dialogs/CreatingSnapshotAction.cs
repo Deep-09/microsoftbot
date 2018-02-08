@@ -27,8 +27,8 @@ namespace Microsoft.Bot.Sample.LuisBot
         {
             Dictionary<string, string> MyEntities = new Dictionary<string, string>();
 
-            MyEntities.Add("VM_Name", VM_Name);
-            MyEntities.Add("snapshot_Name", snapshot_Name);
+            MyEntities.Add("VM_Name", this.VM_Name);
+            MyEntities.Add("snapshot_Name", this.snapshot_Name);
  
             CreateJSON createJSON = new CreateJSON();
 

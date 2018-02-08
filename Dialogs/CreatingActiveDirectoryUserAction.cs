@@ -46,11 +46,11 @@ namespace LuisBot.Dialogs
         {
             Dictionary<string, string> MyEntities = new Dictionary<string, string>();
 
-            MyEntities.Add("OrganizationUnit_Name", OrganizationUnit_Name);
-            MyEntities.Add("samaccountname", samaccountname);
-            MyEntities.Add("User_Name", User_Name);
-            MyEntities.Add("Display_Name", Display_Name);
-            MyEntities.Add("Password", Password);
+            MyEntities.Add("OrganizationUnit_Name", this.OrganizationUnit_Name);
+            MyEntities.Add("samaccountname", this.samaccountname);
+            MyEntities.Add("User_Name", this.User_Name);
+            MyEntities.Add("Display_Name", this.Display_Name);
+            MyEntities.Add("Password", this.Password);
 
             CreateJSON createJSON = new CreateJSON();
 

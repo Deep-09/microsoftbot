@@ -49,14 +49,14 @@ namespace LuisBot.Dialogs
         {
             Dictionary<string, string> MyEntities = new Dictionary<string, string>();
 
-            MyEntities.Add("vcenter_IP", vcenter_IP);
-            MyEntities.Add("Port", Port);
-            MyEntities.Add("Admin_Username", Admin_Username);
-            MyEntities.Add("Admin_Password", Admin_Password);
-            MyEntities.Add("VMHost_IP", VMHost_IP);
-            MyEntities.Add("Datastore", Datastore);
-            MyEntities.Add("Template_Name", Template_Name);
-            MyEntities.Add("VM_Name", VM_Name);
+            MyEntities.Add("vcenter_IP", this.vcenter_IP);
+            MyEntities.Add("Port", this.Port);
+            MyEntities.Add("Admin_Username", this.Admin_Username);
+            MyEntities.Add("Admin_Password", this.Admin_Password);
+            MyEntities.Add("VMHost_IP", this.VMHost_IP);
+            MyEntities.Add("Datastore", this.Datastore);
+            MyEntities.Add("Template_Name", this.Template_Name);
+            MyEntities.Add("VM_Name", this.VM_Name);
 
             CreateJSON createJSON = new CreateJSON();
 

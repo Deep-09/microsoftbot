@@ -25,7 +25,7 @@ namespace LuisBot.Dialogs
         {
             Dictionary<string, string> MyEntities = new Dictionary<string, string>();
 
-            MyEntities.Add("samaccountname", samaccountname);
+            MyEntities.Add("samaccountname", this.samaccountname);
 
             CreateJSON createJSON = new CreateJSON();
 
