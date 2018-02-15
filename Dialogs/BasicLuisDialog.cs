@@ -100,7 +100,15 @@ namespace Microsoft.Bot.Sample.LuisBot
             message.Text = actionResult != null ? actionResult.ToString() : "Cannot resolve your query";
             await context.PostAsync(message);
         }
- 
+
+        [LuisIntent("Software Install")]
+        public async Task IntentSoftwareInstallActionResultHandlerAsync(IDialogContext context, object actionResult)
+        {
+            var message = context.MakeMessage();
+            message.Text = actionResult != null ? actionResult.ToString() : "Cannot resolve your query";
+            await context.PostAsync(message);
+        }
+
     }
 
     public class MyDetail
