@@ -109,6 +109,21 @@ namespace Microsoft.Bot.Sample.LuisBot
             await context.PostAsync(message);
         }
 
+        [LuisIntent("Check Incident Status")]
+        public async Task IntentCheckIncidentStatusActionResultHandlerAsync(IDialogContext context, object actionResult)
+        {
+            var message = context.MakeMessage();
+            message.Text = actionResult != null ? actionResult.ToString() : "Cannot resolve your query";
+            await context.PostAsync(message);
+        }
+
+        [LuisIntent("Create Incident")]
+        public async Task IntentCIncidentActionResultHandlerAsync(IDialogContext context, object actionResult)
+        {
+            var message = context.MakeMessage();
+            message.Text = actionResult != null ? actionResult.ToString() : "Cannot resolve your query";
+            await context.PostAsync(message);
+        }
     }
 
     public class MyDetail
