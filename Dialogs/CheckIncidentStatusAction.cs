@@ -20,7 +20,7 @@ namespace LuisBot.Dialogs
         {
             Dictionary<string, string> MyEntities = new Dictionary<string, string>();
 
-            MyEntities.Add("Incident_Number", this.incidentnumber);
+            MyEntities.Add("Check Incident Status", this.incidentnumber);
 
             CreateJSON createJSON = new CreateJSON();
 
