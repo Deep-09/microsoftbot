@@ -188,6 +188,8 @@
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Dialogs\AutomationParameter.cs" />
     <Compile Include="Dialogs\CancelAction.cs" />
+    <Compile Include="Dialogs\CheckIncidentStatusAction.cs" />
+    <Compile Include="Dialogs\CreateIncidentAction.cs" />
     <Compile Include="Dialogs\CreateVirtualMachine.cs" />
     <Compile Include="Dialogs\CreatingSnapshotAction-ChangeVMNameAction.cs" />
     <Compile Include="Dialogs\CreateADAccount-ChangeUserName.cs" />
